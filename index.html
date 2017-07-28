@@ -1,0 +1,1127 @@
+<meta charset="UTF-8" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js" type="text/javascript">
+</script>
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js">
+</script>
+
+<script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js" type="text/javascript">
+</script>
+
+<script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay_progress.min.js" type="text/javascript">
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" type="text/css" />
+
+<style type="text/css">
+        /*<![CDATA[*/
+        /* Deine Slideshow */
+        /*Großes Bild auf ProduktSeite*/
+        .cc-shop-product-main-image {
+            border-radius: 30px;
+            box-shadow: 10px 5px 20px grey;
+        }
+        /*Produkt Bild auf Übersichtsseite*/
+        .j-webview-product-image {
+            border-radius: 60px;
+            width: 330px;
+            max-width: 330px !important;
+        }
+
+     
+
+        .cc-webview-product
+        {
+            width: 340px !important;
+        }
+
+        /*Produkt Slider*/
+        .cc-catalog-wrapper
+        {
+            margin-left: 40px !important;
+            margin-right: 40px !important;
+        }
+
+        .cc-product-title a
+        {
+            font-size: 16px;
+        }
+
+        .cc-product-title
+        {
+            margin-bottom: 16px !important;
+        }
+
+        /*Produkt beschreibungs feld*/
+        .cc-shop-product-desc {
+            box-shadow: 10px 10px 30px grey;
+            padding: 15px;
+            border-radius: 30px;
+
+        }
+        /*Header*/
+        .jtpl-header__inner
+        {
+            height:100px;
+        }
+
+        .jtpl-header
+        {
+            margin-top:30px;
+            opacity:0.75;
+        }
+
+        /*Shop Image vergrößern*/
+        .jtpl-content
+        {
+            max-width:1200px;
+        }
+
+        /*Shop Thumbnail vergrößern*/
+        .cc-shop-product-thumbnail img
+        {
+            width:75px;
+            height:75px;
+            border-radius:12px;
+        }
+
+        .jtpl-header--image
+        {
+            height:400px;
+        }
+        .j-cart-icon
+        {
+            padding-top:2px;
+            height:34px;
+        }
+
+        .moreLink
+        {
+            text-align: center;
+            font-size: 19px;
+            font-weight: 400;
+        }
+
+        /*Register Area*/
+        .input-group-addon
+        {
+            width:110px;
+        }
+
+        .input-group
+        {
+            padding-bottom:7px;
+        }
+
+        .url-text-box
+        {
+            witdh:700px !important;
+        }
+
+        .url-group
+        {
+            float:left;
+            width: 700px
+        }
+
+
+
+        /*]]>*/
+</style>
+
+
+<style type="text/css">
+        /*<![CDATA[*/
+        /* Deine Slideshow */
+        .j-webview-product-image {
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -o-transition: all 1s ease;
+            transition: all 1s ease;
+        }
+
+        .j-webview-product-image:hover {
+            -moz-transform: scale(1.5);
+            -o-transform: scale(1.5);
+            transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+        }
+        
+        /* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    opacity:0;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+        visibility: visible;
+    -webkit-animation: fadeOut 6s,fadeIn 3s;
+    animation: fadeOut 6s,fadeIn 3s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+@-webkit-keyframes fadeOut {
+    from {opacity: 1}
+    to {opacity:0 }
+}
+
+@keyframes fadeOut {
+    from {opacity: 1}
+    to {opacity:0}
+}
+
+
+.swipeImageContainer {
+    position:fixed;
+    height: 400px;
+    width:100%;
+        z-index: 900;
+}
+
+.swipeImage {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+        }
+        
+.hideSwipeImage {
+opacity: 0;
+    -webkit-animation: fadeOut 2s;
+    animation: fadeOut 2s;
+}
+
+
+        /*]]>*/
+</style>
+
+
+<script type="text/javascript">
+        //<![CDATA[
+        emailjs.init("user_nPDEql3LDZsmWdR4Cz3su");
+        var language = "DE";
+
+        var getUrlParam =  function( name, url ) {
+            if (!url) url = location.href;
+            name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+            var regexS = "[\\?&]"+name+"=([^&#]*)";
+            var regex = new RegExp( regexS );
+            var results = regex.exec( url );
+            return results == null ? null : results[1];
+        };
+
+        var getLang = function(callback)
+        {
+            var lang = getUrlParam("lang");
+            if(lang === null || lang === undefined)
+            {
+                getLangFromStore(callback);
+            }else
+            {
+                saveLangToStore(lang,null);
+                callback(lang)
+            }
+        };
+
+        var saveId = function()
+        {
+            var uid = getUrlParam("uid");
+            if(uid !== null && uid !== undefined)
+            {
+                getIp(function(data)
+                {
+                    setKeyValue(data.ip + "_uid",uid);
+                })
+            }
+        };
+
+        var getId = function(callback)
+        {
+            getIp(function(data)
+                {
+                    getKeyValue(data.ip + "_uid",callback)
+                }
+            )
+        };
+
+        var saveLangToStore = function(lang,callback)
+        {
+            language = lang;
+                        var localCallback = callback;
+            getIp(function(data)
+            {
+                setKeyValue(data.ip +"_lang" ,lang,localCallback);
+                        
+            })
+        };
+
+        var getLangFromStore = function(callback)
+        {
+            var c = callback;
+            getIp(function(data)
+                {
+                    getKeyValue2(data.ip +"_lang").done(function(lang)
+                    {
+                        if(!lang)
+                        {
+                            language = "DE";
+                        }
+                        lang =  lang.replace(/\"/g,"")
+                        c(lang);
+                    })
+                }
+            );
+        };
+
+        var detectmob = function() {
+            return window.innerWidth <= 700 ;
+        };
+
+        var detectEditMode = function()
+        {
+            return window.location.href.includes( "cms.e.jimdo.com");
+        };
+
+        var getIp = function(callback)
+        {
+            $.get("https://ipinfo.io", callback, "jsonp");
+        };
+
+
+
+        var setKeyValue = function(key,value, callback)
+        {
+            $.get("https://hook.io/datastore/set?key=" + key + "&value=" + value + "&hook_private_key=377336a2-57d9-484a-ac24-a4c3665b13ff", function(data){
+                                console.log("Result: " + data);
+                                callback();
+                        } );
+        };
+
+        var getKeyValue = function(key,callback)
+        {
+            $.get("https://hook.io/datastore/get?key=" + key + "&hook_private_key=377336a2-57d9-484a-ac24-a4c3665b13ff", callback);
+        };
+
+        var getKeyValue2 = function(key,callback)
+        {
+            return $.get("https://hook.io/datastore/get?key=" + key + "&hook_private_key=377336a2-57d9-484a-ac24-a4c3665b13ff");
+        };
+
+        var detectProtectedMode = function()
+        {
+            return window.location.href.includes( "protected-checkout.net");
+        };
+
+        var detectCheckOut = function()
+        {
+            return window.location.href.includes("checkout");
+        };
+
+        var  onGermanClick = function()
+        {
+            saveLangToStore("DE", function() 
+                        {
+                              window.location.reload();
+                        });
+      
+        };
+
+        var  onEnglishClick = function()
+        {
+             saveLangToStore("EN", function() 
+                        {
+                              window.location.reload();
+                        });
+        };
+
+        var  onFrenchClick = function()
+        {
+             saveLangToStore("FR", function() 
+                        {
+                              window.location.reload();
+                        });
+        };
+
+        var translateElements = function(elements, editmode)
+        {
+            for (var i = 0; i < elements.length; i++)
+            {
+                elements[i].style.opacity = 1;
+                if(!editmode)
+                {
+                    if(elements[i].innerHTML.includes("$$"))
+                    {
+                        var langIndex = 0;
+                        if(language === "EN")
+                        {
+                            langIndex = 1
+                        }
+                        else if(language === "FR")
+                        {
+                            langIndex = 2
+                        }
+                        var split = elements[i].innerHTML.split("$$");
+                        if(split.length > langIndex)
+                            elements[i].innerHTML = elements[i].innerHTML.split("$$")[langIndex];
+                        else
+                            elements[i].innerHTML = elements[i].innerHTML.split("$$")[0];
+                    }
+                }
+            }
+        };
+
+        var addLanguage = function(src,click){
+            var imDe = document.createElement("img");
+            imDe.setAttribute("src",src);
+            imDe.setAttribute("onClick",click);
+            imDe.height=20;
+            return imDe;
+        };
+
+        var addTranslationButtons = function()
+        {
+            var de = addLanguage("https://cdn2.iconfinder.com/data/icons/world-flag-icons/128/Flag_of_Germany.png","onGermanClick()");
+            var en = addLanguage("https://cdn2.iconfinder.com/data/icons/world-flag-icons/128/Flag_of_United_Kingdom.png","onEnglishClick()");
+            var fr = addLanguage("https://cdn2.iconfinder.com/data/icons/world-flag-icons/128/Flag_of_France.png","onFrenchClick()");
+
+            var header = $(".jtpl-header__inner")[0];
+            header.appendChild(de);
+            header.appendChild(en);
+            header.appendChild(fr);
+
+        };
+
+        var translationProduct =
+            [
+                {
+                    "regex":/verfügbar/g,
+                    "EN": "available",
+                    "FR": "disponible"
+                },
+                {
+                    "regex":/Gesamtpreis/g,
+                    "EN": "Total price",
+                    "FR": "prix total"
+                },
+                {
+                    "regex":/, zzgl. Versandkosten/g,
+                    "EN": ", incl. shipping",
+                    "FR": ", frais de port"
+                },
+                {
+                    "regex":/, versandkostenfrei/g,
+                    "EN": ", free shipping",
+                    "FR": ", livraison gratuite"
+                },
+                {
+                    "regex":/Tage Lieferzeit/g,
+                    "EN": "Days delivery time",
+                    "FR": "livraison"
+                },
+                {
+                    "regex":/In den Warenkorb/g,
+                    "EN": "Add to shopping cart",
+                    "FR": "Ajouter au panier"
+                }
+
+            ];
+
+        var translationNavigation =
+            [
+                {
+                    "regex":/Ringe/g,
+                    "EN": "Rings",
+                    "FR": "Anneaux"
+                },
+                {
+                    "regex":/Ohrringe/g,
+                    "EN": "Earrings",
+                    "FR": "Boucles d'oreilles"
+                },
+                {
+                    "regex":/Kontakt/g,
+                    "EN": "Contact",
+                    "FR": "Contact"
+                },
+                {
+                    "regex":/Armbänder/g,
+                    "EN": "Bracelets",
+                    "FR": "TODO"
+                }
+            ];
+
+        var translationWarenkorb =
+            [
+
+                {
+                    "regex":/Ihr Warenkorb ist leer/g,
+                    "EN": "Your shopping cart is empty",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Warenkorb/g,
+                    "EN": "Shopping cart",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Anmerkung zur Bestellung/g,
+                    "EN": "Comment for your order",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Nächster Schritt/g,
+                    "EN": "Next step",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Adresse angeben/g,
+                    "EN": "Enter Address",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Bezahlen/g,
+                    "EN": "Pay",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Bestätigen/g,
+                    "EN": "Confirm",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Einzelpreis/g,
+                    "EN": "Single price",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Anzahl/g,
+                    "EN": "Amount",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Preis/g,
+                    "EN": "Price",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Zwischensumme/g,
+                    "EN": "Subtotal",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Versandkosten/g,
+                    "EN": "Shipping",
+                    "FR": "Frais de port"
+                },
+                {
+                    "regex":/Gesamtsumme/g,
+                    "EN": "Total sum",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Aufgrund des Kleinunternehmerstatus gem. § 19 UStG erheben wir keine Umsatzsteuer und weisen diese daher auch nicht aus./g,
+                    "EN": "Due to the small business status according to. § 19 UStG, we do not charge VAT and do not rule them out.",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Die angegebenen Shipping gelten für Inlandsversand \(Deutschland\), bei Versand ins Ausland können sie davon abweichen./g,
+                    "EN": "The shipping costs are valid for domestic shipping (Germany), but can differ from shipping abroad.",
+                    "FR": "Todo"
+                }
+
+
+            ];
+
+        var translationAddress =
+            [
+
+                {
+                    "regex":/Rechnungs- und Lieferadresse/g,
+                    "EN": "Billing and Delivery address",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Andere Lieferadresse/g,
+                    "EN": "Other delivery address",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Lieferadresse/g,
+                    "EN": "Delivery address",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Vorname/g,
+                    "EN": "Given name",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Nachname/g,
+                    "EN": "Name",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Straße, Nr/g,
+                    "EN": "Street, Nr",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Postleitzahl/g,
+                    "EN": "Postal code",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Stadt/g,
+                    "EN": "City",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Bundesland.Kanton/g,
+                    "EN": "Federal state",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Telefon/g,
+                    "EN": "Phone",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Land/g,
+                    "EN": "Country",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Pflichtfeld/g,
+                    "EN": "Required field",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Ändern/g,
+                    "EN": "Edit",
+                    "FR": "Todo"
+                }
+
+
+            ];
+
+        var translationPayMethod =
+            [
+
+                {
+                    "regex":/Zahlungsmethode auswählen./g,
+                    "EN": "Choose payment method",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Kreditkarte, Lastschrift, Überweisung/g,
+                    "EN": "Credit card, debit, transfer",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Bei Auswahl dieser Zahlungsart erfolgt im nächsten Schritt die Weiterleitung zu PayPal. Wenn dort die erforderlichen Daten eingetragen worden sind, geht es automatisch zurück in diesen Shop, um die Bestellung abzuschließen./g,
+                    "EN": "When you select this type of payment, the next step is to transfer to PayPal. When the necessary data has been entered there, it automatically returns to this shop to complete the order.",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Gegen Vorkasse/g,
+                    "EN": "Payment in advance",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Zahlungsart/g,
+                    "EN": "Payment method",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Ändern/g,
+                    "EN": "Edit",
+                    "FR": "Todo"
+                }
+            ];
+
+        var translationButtons =
+            [
+
+                {
+                    "regex":/Nächster Schritt/g,
+                    "EN": "Next step",
+                    "FR": "Todo"
+                },
+                {
+                    "regex":/Kaufen/g,
+                    "EN": "Buy",
+                    "FR": "Todo"
+                }
+            ];
+
+        var translateStaticTexts = function()
+        {
+            if(language !== "DE" )
+            {
+                translateArea($(".cc-shop-product-desc"),translationProduct);
+                translateArea($(".jtpl-navigation"),translationNavigation);
+                translateArea($(".j-nav-variant-breadcrumb"),translationNavigation);
+
+                //Warenkorb
+                if(detectCheckOut())
+                {
+                    //checkout steps
+                    translateArea($("#cc-checkout-steps"),translationWarenkorb);
+                    editButtons();
+                    if(detectProtectedMode())
+                    {
+                        //Lieferadresse
+                        translateArea($(".j-checkout__billing-address"),translationAddress);
+                        translateArea($("#cc-checkout-shipping-address-form"),translationAddress);
+                        //Bezahlmethode
+                        translateArea($(".j-checkout__payment-options"),translationPayMethod);
+                        translateArea($(".j-checkout__heading"),translationPayMethod);
+                        //Confirm
+                        translateArea($(".j-checkout__heading"),translationAddress);
+                        translateArea($(".j-checkout__overview-adress-data"),translationAddress);
+                        translateArea($("#cc-checkout-wayofpayment"),translationPayMethod);
+                        translateArea($(".j-checkout__column-labels"),translationWarenkorb);
+                        translateArea($(".j-checkout__products-subtotal-label"),translationWarenkorb);
+                        translateArea($(".j-checkout__shipping-costs-label"),translationWarenkorb);
+                        translateArea($(".j-checkout__products-total-label"),translationWarenkorb);
+                        translateArea($(".j-checkout__footnote"),translationWarenkorb);
+                    }
+                    else
+                    {
+                        translateArea($(".j-checkout__footnote"),translationWarenkorb);
+                        translateArea($(".j-checkout__products-subtotal-label"),translationWarenkorb);
+                        translateArea($(".j-checkout__shipping-costs-label"),translationWarenkorb);
+                        translateArea($(".j-checkout__products-total-label"),translationWarenkorb);
+                        translateArea($(".j-checkout__column-labels"),translationWarenkorb);
+                        translateArea($(".j-checkout__heading"),translationWarenkorb);
+                        translateArea($(".j-checkout__customer-order-note__label"),translationWarenkorb);
+                        //translateArea($(".j-checkout__button-container"),translationWarenkorb);
+                    }
+                }
+            }
+        };
+
+        var editButtons = function()
+        {
+            var button = $(".j-checkout__button");
+            if(button)
+            {
+                var curText = $(button).attr( "value" );
+                var newText = translateText(curText,translationButtons);
+                $(button).attr("value",newText)
+            }
+        };
+
+        var translateArea = function(area,translationlist)
+        {
+            if(area && area.length > 0)
+            {
+                var areaContent = area[0].innerHTML;
+                areaContent = translateText(areaContent,translationlist);
+                area[0].innerHTML = areaContent;
+            }
+        };
+
+        var translateText = function(text, translationlist)
+        {
+            if(!text) return text;
+            
+            for (var k = 0; k < translationlist.length; k++)
+            {
+                text = text.replace(translationlist[k].regex,translationlist[k][language]);
+
+            }
+            return text;
+        };
+
+        var translate = function()
+        {
+
+            translateStaticTexts();
+            addTranslationButtons();
+
+            translateElements($(".description"),detectEditMode());
+            translateElements(document.getElementsByClassName("j-module n j-text"),detectEditMode());
+            translateElements($("h1"),detectEditMode());
+        };
+
+        var setWidth = function(className,size){
+            var elements = document.getElementsByClassName(className);
+            if(elements != null && elements.length === 1)
+                elements[0].style.width = size;
+        };
+
+        var setHeight = function(className,size){
+            var elements = document.getElementsByClassName(className);
+            if(elements != null && elements.length === 1)
+                elements[0].style.height = size;
+        };
+                
+        
+
+        //Warenkorb anpassen
+        var modifyCheckOut = function()
+        {
+            //Nur der Sichere Teil
+            if(detectProtectedMode())
+            {
+                getId(function(id)
+                {
+                    var userComment = $("#billing_user_note");
+                    if(userComment)
+                    {
+                        userComment.text("OrderId=" + id);
+                        $(".j-checkout__addressform-user-note").hide();
+                    }
+                });
+
+                //Kommentar in "Bestätigen" Tab verstecken
+                var comment = $(".j-checkout__overview-adress-data-user-notes");
+                if(comment)
+                {
+                    $(comment).hide();
+                }
+            }
+        };
+
+        window.onload = function(e){
+            fixBrowserIssues();
+                        
+                        
+            if(detectEditMode())
+                return;
+                                
+                                
+                        // Show full page LoadingOverlay
+            $.LoadingOverlay("show");
+
+                        
+
+            getLangFromStore(function(lang)
+            {
+                        
+                        
+                language = lang;
+                saveId();
+                /*Shop Image vergrößern*/
+
+                if(detectmob())
+                {
+                                        //Mobile view                                   
+                                        setWidth("cc-shop-product-img","300px");
+                    setWidth("cc-product-superzoom","300px");
+                    setWidth("cc-shop-product-main-image photo","300px");
+                                        
+                                        
+                                        
+                                        $(".j-webview-product-image").css("margin","10px");
+                                        $(".j-webview-product-image").css("width","220px");
+                                        
+                                        //linken und rechten Rand vergrößern
+                                        $(".jtpl-content").css("padding-left","3px");
+                                        $(".jtpl-content").css("padding-right","3px");
+                                        
+                                        //TExt sichtbar machen 
+                                        $(".j-catalog-product-title-link").css("width","70%");          
+                                        
+                                        
+                                        //Größe von Produkt auf Überssichtsseite
+                                        $("img.j-webview-product-image").css("height","90%");
+                                        $("img.j-webview-product-image").css("width","90%");
+                                        
+                                        
+                                        $("img.cc-shop-product-main-image").css("margin-bottom","5px");
+                                        $("ul.cc-shop-product-alternatives").css("margin-bottom","5px");
+                                        
+                                        
+       
+                                        
+                                        setHeight("jtpl-header--image","170px");
+                                        
+                                        if(!window.location.href.match(/valeries-handmade-jewelry\.de\/\w+/i))
+                                        {
+                                                //Home Seite
+                                                //TExt sichtbar machen 
+                                                $(".j-catalog-product-title-link").css("display","flex");       
+                                                $("img.j-webview-product-image").css("width","200px");
+                                        }
+                }
+                else
+                {
+                                        //Desktop View
+                    setWidth("cc-shop-product-img","400px");
+                    setWidth("cc-product-superzoom","400px");
+                    setWidth("cc-shop-product-main-image photo","400px");
+                                        
+                                        //Größe von Produkt auf Überssichtsseite
+                                        $("img.j-webview-product-image").css("height","240px");
+                                        $("img.j-webview-product-image").css("width","340px");
+                                        
+                                        $("a.cc-webview-product-image").css("height","250px");
+                                        $("a.cc-webview-product-image").css("width","350px");
+                                        
+                                        
+                                        if(window.location.href.match(/valeries-handmade-jewelry\.de\/\w+/i))
+                                                setHeight("jtpl-header--image","290px");
+                }
+                                
+                                
+                
+
+                modifyCheckOut();
+                translate();
+                initRegistration();
+                $.LoadingOverlay("hide");
+            })
+
+        };
+
+        var imageMousOver = function(sender, eventArgs)
+        {
+            // alert(sender);
+        };
+
+        var createLink = function(uid)
+        {
+            return "https://www.valeries-handmade-jewelry.de/?uid=" + uid;
+        };
+
+        function guidGenerator() {
+            var S4 = function() {
+                return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+            };
+            return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+        };
+
+        var fixBrowserIssues = function()
+        {
+            //es gibt kein includes bei IE
+             if (!String.prototype.includes) {
+                String.prototype.includes = function() 
+                {
+                'use strict';
+                return String.prototype.indexOf.apply(this, arguments) !== -1;
+                };
+            }
+            
+            $.ajaxSetup({
+                cache: false
+            });
+        };
+                
+                var showSwipeFinger = function()
+                {
+                        $('body').prepend('<div class="swipeImageContainer"><img class="swipeImage"  style="display:block" id="theImg" src="https://image.jimcdn.com/app/cms/image/transf/dimension=320x10000:format=png/path/s25a3c5d87bf6f6ef/image/i482148f77f5da0e6/version/1500924829/image.png" /><\/div>')
+                }
+                
+                var hideSwipeFinger = function()
+                {
+                        $($('.swipeImage')[0]).addClass("hideSwipeImage");      
+                }
+                
+                
+                
+        var initRegistration = function()
+        {
+            var myform = $("form#myform");
+            if(myform)
+            {
+                //Add event listener
+                $( "#copyUrlButton" ).click(function() {
+                    var textBox = $("#urlTextBox");
+                    $(textBox).select();
+                    document.execCommand('copy');
+                    $(textBox).blur();
+                    
+                     $("#myPopup")[0].classList.toggle("show");
+                
+                });
+
+                $('input[type="radio"]').on('click change', function(e) {
+                    if($("#paypal")[0].checked)
+                    {
+                        $("#paypal_region").show();
+                        $("#bankaccount_region").hide();
+                        $("#iban").removeAttr("required");
+                        $("#bic").removeAttr("required");
+                    }
+                    else
+                    {
+                        $("#paypal_region").hide();
+                        $("#bankaccount_region").show();
+                        $("#iban").attr("required","");
+                        $("#bic").attr("required","");
+                    }
+                });
+
+                //Form submit event
+                myform.submit(function(event)
+                {
+                    event.preventDefault();
+                    var params = myform.serializeArray().reduce(function(obj, item) {
+                        obj[item.name] = item.value;
+                        return obj;
+                    }, {});
+
+                    //Init Url
+                    var uid =  guidGenerator();
+                    var url = createLink(uid);
+                    $("#urlTextBox")[0].value = url;
+                    params.url = url;
+                    params.uid = uid;
+                    if($("#paypal")[0].checked)
+                    {
+                        params.zahlung = "Paypal"
+                    }
+                    else
+                    {
+                        params.zahlung = "Überweisung";
+
+                    }
+
+                    // Change to your service ID, or keep using the default service
+                    var service_id = "default_service";
+
+                    var template_id = "valeries_handmade_jewelry_customer";
+                    myform.find("button").text("Senden...");
+                    //an Kunden senden
+                    emailjs.send(service_id,template_id,params).then(function()
+                    {
+                        myform.find("button").text("Registriert");
+                        $("#affiliateUrl").show();
+                        $(myform).hide();
+                    }, function(err)
+                    {
+                        alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+                        myform.find("button").text("Send");
+                    });
+                    //an Valerie senden
+                    emailjs.send(service_id,"valeries_handmade_jewelry_me",params);
+                    return false;
+                });
+            }
+        };
+
+
+        window.onscroll = function(e){
+                
+                
+            var header = $(".jtpl-header")[0];
+            var rectHeader = header.getBoundingClientRect();
+
+            var body = $(".jtpl-section-main")[0];
+            var rectBody = body.getBoundingClientRect();
+
+            var header_inner = $(".jtpl-header__inner")[0];
+            var cart = document.getElementsByClassName("j-cart")[0];
+
+
+            var image = header_inner.getElementsByTagName("img")[0];
+            image.onmouseover=imageMousOver;
+
+            var defaultHeaderHeight = 100;
+            var maxMargin = 30;
+            var cartTop = 4;
+
+
+            if(rectBody.top < defaultHeaderHeight)
+            {
+                                console.log("If 1");
+                                //Seite ist weit unten
+
+                                
+                header.style.marginTop = "0px";
+                header.style.opacity = "1.0";
+                header_inner.style.height = "50px";
+                image.style.maxWidth = "50%";
+                if (cart !== undefined){
+                    cart.style.top = cartTop + "px";
+                    //console.log("Test");
+                }
+            }
+            else
+            {
+                if(rectBody.top < (maxMargin + defaultHeaderHeight))
+                {
+                                        console.log("If 2");
+                    var margin = (rectBody.top - defaultHeaderHeight) ;
+                    header_inner.style.height = 50 + margin * 100 / 50 + "px";
+                    image.style.maxWidth = 50 + + margin * 100 / 50 + "%";
+                    header.style.marginTop = margin + "px";
+
+                    header.style.opacity = 1- (0.75 * (margin /60));
+                    console.log("Header Height: " + header_inner.style.height + " Margin: " + margin);
+
+                    if (cart !== undefined){
+                        cart.style.top = cartTop +margin + "px";
+                        //console.log("Test");
+                    }
+
+                }
+                else
+                {
+                                        console.log("If 3");
+                                        //Seite ist ganz oben
+                    header.style.marginTop = maxMargin + "px";
+                    header.style.opacity = "0.75";
+                    header_inner.style.height = defaultHeaderHeight + "px";
+                    image.style.maxWidth = "100%";
+                    if (cart !== undefined){
+                        cart.style.top = "55px";
+                        //console.log("Test");
+                    }
+                }
+
+            }
+        }
+        //]]>
+</script>
