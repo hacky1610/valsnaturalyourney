@@ -40,7 +40,7 @@
  * Ersetze datenbankname_hier_einfuegen
  * mit dem Namen der Datenbank, die du verwenden möchtest.
  */
-define('DB_NAME', 'emptywp');
+define('DB_NAME', 'localwp');
 
 /**
  * Ersetze benutzername_hier_einfuegen
