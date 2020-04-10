@@ -5,15 +5,14 @@ msgstr ""
 "Project-Id-Version: WooCommerce Subscriptions 3.0.3\n"
 "Report-Msgid-Bugs-To: https://woocommerce.com/contact-us\n"
 "Last-Translator: Daniel Hackbarth\n"
-"Language-Team: \n"
+"Language-Team: French (France)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2020-04-01T05:03:28+00:00\n"
-"PO-Revision-Date: 2020-04-10 20:39+0000\n"
+"PO-Revision-Date: 2020-04-10 21:39+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: woocommerce-subscriptions\n"
-"\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Loco-Version: 2.3.3; wp-5.3.2"
@@ -791,7 +790,7 @@ msgstr ""
 
 #: includes/admin/class-wcs-admin-post-types.php:429
 msgid "Last Order Date"
-msgstr ""
+msgstr "Date de la dernière commande"
 
 #: includes/admin/class-wcs-admin-post-types.php:430
 msgid "End Date"
@@ -1522,7 +1521,7 @@ msgstr ""
 
 #: includes/admin/reports/class-wcs-report-subscription-by-product.php:20
 msgid "Product"
-msgstr ""
+msgstr "PRODUIT"
 
 #: includes/admin/reports/class-wcs-report-subscription-by-product.php:21
 msgid "Products"
@@ -2296,12 +2295,12 @@ msgstr ""
 #. translators: placeholder is next payment's date
 #: includes/class-wc-subscriptions-change-payment-gateway.php:201
 msgid " Next payment is due %s."
-msgstr ""
+msgstr "Le prochain paiement est dû %s."
 
 #. translators: placeholder is either empty or "Next payment is due..."
 #: includes/class-wc-subscriptions-change-payment-gateway.php:207
 msgid "Choose a new payment method.%s"
-msgstr ""
+msgstr "Choisissez un nouveau mode de paiement.%s"
 
 #: includes/class-wc-subscriptions-change-payment-gateway.php:243
 #: includes/early-renewal/class-wcs-early-renewal-modal-handler.php:97
@@ -2364,7 +2363,7 @@ msgstr ""
 #: includes/class-wc-subscriptions-change-payment-gateway.php:737
 msgctxt "the page title of the change payment method form"
 msgid "Change payment method"
-msgstr ""
+msgstr "Changer la méthode de paiement"
 
 #: includes/class-wc-subscriptions-change-payment-gateway.php:702
 #: includes/class-wc-subscriptions-change-payment-gateway.php:742
@@ -3405,7 +3404,7 @@ msgstr ""
 
 #: includes/class-wcs-query.php:141
 msgid "My Subscription"
-msgstr ""
+msgstr "Mes abonnements"
 
 #: includes/class-wcs-query.php:298
 msgid "Endpoint for the My Account &rarr; Subscriptions page"
@@ -4995,7 +4994,7 @@ msgstr ""
 #: includes/upgrades/templates/wcs-about-2-0.php:121
 msgctxt "h3 on the About Subscriptions page for this new feature"
 msgid "Change Payment Method"
-msgstr ""
+msgstr "Changer la méthode de paiement"
 
 #. translators: placeholders are opening and closing <strong> tags
 #: includes/upgrades/templates/wcs-about-2-0.php:124
@@ -5715,8 +5714,8 @@ msgstr[1] ""
 msgctxt "Subscription billing period."
 msgid "month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mois"
+msgstr[1] "mois"
 
 #. translators: placeholder is number of years. (e.g. "Bill this every year / 4 years")
 #: includes/wcs-time-functions.php:36
@@ -5741,8 +5740,8 @@ msgstr[1] ""
 #: includes/wcs-time-functions.php:57
 msgid "%s month"
 msgid_plural "a %s-month"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "mois"
+msgstr[1] "mois"
 
 #: includes/wcs-time-functions.php:58
 msgid "%s year"
@@ -5969,17 +5968,17 @@ msgstr ""
 #: templates/emails/email-order-details.php:37
 msgctxt "table headings in notification email"
 msgid "Quantity"
-msgstr ""
+msgstr "QUANTITÉ"
 
 #: templates/checkout/form-change-payment-method.php:22
 msgctxt "table headings in notification email"
 msgid "Totals"
-msgstr ""
+msgstr "TOTAUX"
 
 #: templates/checkout/form-change-payment-method.php:47
 msgctxt "text on button on checkout page"
 msgid "Change payment method"
-msgstr ""
+msgstr "Changer la méthode de paiement"
 
 #: templates/checkout/form-change-payment-method.php:49
 msgctxt "text on button on checkout page"
@@ -6101,7 +6100,7 @@ msgstr ""
 #: tests/unit/scheduler/scheduler.php:68 wcs-functions.php:303
 msgctxt "table heading"
 msgid "Last Order Date"
-msgstr ""
+msgstr "Date de la dernière commande"
 
 #: templates/emails/cancelled-subscription.php:24
 msgctxt "table headings in notification email"
@@ -6501,7 +6500,7 @@ msgstr ""
 
 #: templates/myaccount/subscription-details.php:71
 msgid "Payment"
-msgstr ""
+msgstr "Paiement"
 
 #: templates/myaccount/subscription-details.php:81
 msgid "Actions"
@@ -6522,7 +6521,7 @@ msgstr ""
 
 #: templates/myaccount/subscription-totals.php:23
 msgid "Subscription totals"
-msgstr ""
+msgstr "Totaux d'abonnement"
 
 #: templates/single-product/add-to-cart/subscription.php:32
 #: templates/single-product/add-to-cart/variable-subscription.php:30
