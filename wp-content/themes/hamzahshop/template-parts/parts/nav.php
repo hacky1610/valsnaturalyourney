@@ -30,7 +30,7 @@
 					do_action('hamzahshop_custom_min_cart');
 					echo '</div>';
 					echo '<div class="col-sm-4 col-xs-4 mobile-account-button">';
-					do_action('sharonne_account_button');
+					do_action('vnj_account_button');
 					echo '</div>';
 					echo '<div class="col-sm-4 col-xs-4">';
 					echo do_shortcode('[woocommerce_currency_switcher_drop_down_box]'); 
@@ -73,7 +73,7 @@
 						do_action('hamzahshop_custom_min_cart');
 						echo '</div>';
 						echo '<div class="col-lg-3 col-md-3 col-sm-4 account-container">';
-						do_action('sharonne_account_button');
+						do_action('vnj_account_button');
 						echo '</div>';
 						echo '<div class="col-lg-3 col-md-3 col-sm-4 currency-container">';
 						echo do_shortcode('[woocommerce_currency_switcher_drop_down_box]'); 

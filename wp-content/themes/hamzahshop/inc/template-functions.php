@@ -153,17 +153,18 @@ function vnj_checkout_register(){
 add_action( 'vnj_checkout_register', 'vnj_checkout_register' );
 endif;
 
-if ( !function_exists('sharonne_account_button')):
-function sharonne_account_button(){ 
+if ( !function_exists('vnj_account_button')):
+function vnj_account_button(){ 
 
 	echo '<div class="sharonne_account_container">';
+	$myAccountUri = get_site_url() ."/mein-konto";
 	if (is_user_logged_in()) { ?>
 		<div class="btn-group">
 			<button class="btn dropdown-toggle user-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<span  class="fas fa-user"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="https://vals-natural-journey.de/mein-konto/">Mon compte</a></li>
+				<li><a href="<?php echo $myAccountUri; ?>">Mon compte</a></li>
 				<li><a href="<?php echo wc_get_account_endpoint_url('members-area' ) ; ?>">Mon adhésion</a></li>
 				<li><a href="<?php echo wp_logout_url(get_permalink()); ?>">Se déconnecter</a></li>
 				
@@ -175,14 +176,14 @@ function sharonne_account_button(){
 				<span  class="fas fa-user"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="https://vals-natural-journey.de/mein-konto/">Se connecter</a></li>
+				<li><a href="<?php echo $myAccountUri; ?>">Se connecter</a></li>
   			</ul>
 		</div>
       <?php
 		}
 	echo '</div>';
  }
-add_action( 'sharonne_account_button', 'sharonne_account_button' );
+add_action( 'vnj_account_button', 'vnj_account_button' );
 endif;
 
 if ( !function_exists('isUserLoggedIn')):

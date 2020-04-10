@@ -516,12 +516,10 @@ label {
 /*Account*/
 .account-container {
   padding-top: 20px;
-  display: none;
 }
 
 .account-container-small {
   padding-top: 4px;
-  display: none;
 }
 
 .user-button {
