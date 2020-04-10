@@ -9,6 +9,7 @@
 wp-content/*
 !wp-content/plugins/
 !wp-content/themes/
+!wp-content/languages/
 
 # Ignore everything in the "plugins" directory, except the plugins you
 # specify (see the commented-out examples for hints on how to do this.)
@@ -20,3 +21,10 @@ wp-content/plugins/*
 # specify (see the commented-out example for a hint on how to do this.)
 wp-content/themes/*
 !wp-content/themes/hamzahshop/
+
+wp-content/languages/*
+!wp-content/languages/woocommerce-memberships/
+!wp-content/languages/plugins/
+
+wp-content/languages/plugins/*
+!wp-content/languages/plugins/woocommerce-subscriptions-fr_FR.po
