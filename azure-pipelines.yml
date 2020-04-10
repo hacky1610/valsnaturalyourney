@@ -1,0 +1,28 @@
+# PHP
+# Test and package your PHP project.
+# Add steps that run tests, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/php
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  phpVersion: 7.2
+
+steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'valsnaturaljourney'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'valsnaturaljourney-website'
+    cliProjectName: 'Vals Natural Journey'
+    cliSources: '.'
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
