@@ -4340,7 +4340,7 @@ h3.login-title {
   font-size: 25pt;
   margin: 0 0 20px;
   position: relative;
-  text-align: left;
+  text-align: center;
   text-transform: capitalize;
 
   display: table;
@@ -5431,7 +5431,7 @@ figure {
 }
 
 .comment-form .btn {
-  max-width: 150px;
+  max-width: 250px;
   padding: 15px;
   height: 45px;
 }
