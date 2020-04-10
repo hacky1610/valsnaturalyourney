@@ -18,7 +18,10 @@ steps:
     SonarCloud: 'SonarCloud'
     organization: 'valsnaturaljourney'
     scannerMode: 'CLI'
-    configMode: 'file'
+    configMode: 'manual'
+    cliProjectKey: 'valsnaturaljourney-website'
+    cliProjectName: 'Vals Natural Journey'
+    cliSources: '.'
 - task: SonarCloudAnalyze@1
 - task: SonarCloudPublish@1
   inputs:
