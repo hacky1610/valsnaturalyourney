@@ -29,7 +29,9 @@ defined( 'ABSPATH' ) or exit;
  * @version 1.12.0
  * @since 1.9.0
  */
-
+/*
+Reason: Spalten header sind hardcoded
+*/
 $members_area          = wc_memberships()->get_frontend_instance()->get_members_area_instance();
 $customer_membership   = $members_area->get_members_area_user_membership();
 $membership_plan       = $customer_membership ? $customer_membership->get_plan() : null;
