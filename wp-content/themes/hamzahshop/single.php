@@ -19,7 +19,7 @@ get_header(); ?>
 				
             </div>
             <div class="col-md-6">
-            	<?php do_action('hamzahshop_key_action_breadcrumb');?>
+            	<?php hamzahshop_key_action_breadcrumb();?>
             </div>
             
             <!-- /Page Title -->

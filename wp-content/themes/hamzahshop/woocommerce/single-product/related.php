@@ -22,12 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 $show_relatedProducts = false;
 
 $currentLang = getLangFromUri($_SERVER['REQUEST_URI']);
-foreach ( $related_products as $related_product ):
-if($currentLang ===  getLangFromUri($related_product->get_permalink()))
-{
-	$show_relatedProducts = true;
+foreach ( $related_products as $related_product ) {
+	if($currentLang ===  getLangFromUri($related_product->get_permalink()))
+	{
+		$show_relatedProducts = true;
+	}
 }
-endforeach;
 
 if ( $show_relatedProducts ) : ?>
 
