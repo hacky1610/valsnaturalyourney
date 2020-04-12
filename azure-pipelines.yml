@@ -26,3 +26,7 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+- powershell: |
+     phpunit .\wp-content\themes\hamzahshop\test --log-junit php-unit-result.xml
+  displayName: 'Run tests with phpunit'
+
