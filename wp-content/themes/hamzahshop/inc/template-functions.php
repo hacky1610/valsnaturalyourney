@@ -143,6 +143,7 @@ if ( !function_exists('vnj_checkout_register')):
 function vnj_checkout_register(){ 
 ?>
 
+
 <p class="form-row form-row-wide create-account woocommerce-validated">
 	<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
 		<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="vnj_register" type="checkbox" name="vnj_register_check" value="1"> <span>Register?</span>
@@ -153,7 +154,7 @@ function vnj_checkout_register(){
 add_action( 'vnj_checkout_register', 'vnj_checkout_register' );
 endif;
 
-if ( !function_exists('vnj_account_button')):
+if ( !function_exists('vnj_account_button')) {
 function vnj_account_button(){ 
 
 	echo '<div class="sharonne_account_container">';
@@ -165,7 +166,7 @@ function vnj_account_button(){
 			</button>
 			<ul class="dropdown-menu">
 				<li><a href="<?php echo $myAccountUri; ?>">Mon compte</a></li>
-				<li><a href="<?php echo wc_get_account_endpoint_url('members-area' ) ; ?>">Mon adhésion</a></li>
+				<li><a href="<?php echo wc_get_account_endpoint_url('members-area' ) ; ?>"><?php echo esc_html__( 'My courses', 'hamzahshop' ); ?></a></li>
 				<li><a href="<?php echo wp_logout_url(get_permalink()); ?>">Se déconnecter</a></li>
 				
   			</ul>
@@ -184,7 +185,7 @@ function vnj_account_button(){
 	echo '</div>';
  }
 add_action( 'vnj_account_button', 'vnj_account_button' );
-endif;
+}
 
 if ( !function_exists('isUserLoggedIn')):
 function isUserLoggedIn(){ 
@@ -324,7 +325,27 @@ if ( ! function_exists( 'mailchimp_send_mail')):
 	}
 endif;
 
-    if (isset($_POST['callFunc1'])) {
-        echo mailchimp_send_mail();
-    }
+if ( !function_exists('showCourseMenu')) {
+	function showCourseMenu(){ 
+		if (is_user_logged_in()) { ?>
+			<li id="menu-item-mycourses" class="menu-item menu-item-type-post_type menu-item-object-page ">
+			<a href="<?php echo wc_get_account_endpoint_url('members-area' ) ; ?>" aria-current="page"><?php echo esc_html__( 'My courses', 'hamzahshop' ); ?></a>
+			</li>
+			<?php
+		}
+	}
+add_action( 'showCourseMenu', 'showCourseMenu' );
+}
+
+function custom_menu_links( $items, $args ) {
+	
+	   if (is_user_logged_in()) {
+		   $items .= '<li><a href="'. wc_get_account_endpoint_url('members-area' ) .'">' . esc_html__( 'My courses', 'hamzahshop' ) .'</a></li>';  
+ 		}
+
+return $items;
+}
+
+add_filter( 'wp_nav_menu_items', 'custom_menu_links', 10, 2 );
+
 

@@ -20,6 +20,7 @@
 							)
 						);
 						?>
+						
 					</nav>
 				</div>					
 			</div>
@@ -58,7 +59,6 @@
 										array(
 											'theme_location' => 'primary',
 											'container' 	 => '',
-											
 											'items_wrap' => '%3$s'
 										)
 									);

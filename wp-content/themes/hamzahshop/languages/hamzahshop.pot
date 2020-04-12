@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: HamzahShop\n"
-"POT-Creation-Date: 2019-04-12 19:31+0000\n"
+"POT-Creation-Date: 2020-04-12 16:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -31,84 +31,36 @@ msgid ""
 "below or a search?"
 msgstr ""
 
-#: comments.php:32
-#, php-format
-msgctxt "comments title"
-msgid "One thought on &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] ""
-msgstr[1] ""
+#: archive.php:66 index.php:70 search.php:60
+msgid "Previous"
+msgstr ""
 
-#: comments.php:41 comments.php:64
+#: archive.php:67 index.php:71 search.php:61
+msgid "Next"
+msgstr ""
+
+#: archive.php:68 index.php:72 search.php:62
+msgid "&nbsp;"
+msgstr ""
+
+#: comments.php:30
+msgid "Recent Comments"
+msgstr ""
+
+#: comments.php:35 comments.php:58
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:44 comments.php:67
+#: comments.php:38 comments.php:61
 msgid "Older Comments"
 msgstr ""
 
-#: comments.php:45 comments.php:68
+#: comments.php:39 comments.php:62
 msgid "Newer Comments"
 msgstr ""
 
-#: comments.php:81
+#: comments.php:75
 msgid "Comments are closed."
-msgstr ""
-
-#: customizer/class-customize.php:74
-msgid "Lite Theme Options"
-msgstr ""
-
-#: customizer/class-customize.php:91
-msgid "Post show"
-msgstr ""
-
-#: customizer/class-customize.php:96
-msgid "Show excerpt"
-msgstr ""
-
-#: customizer/class-customize.php:97
-msgid "Show full post"
-msgstr ""
-
-#: customizer/class-customize.php:108
-msgid "Contact Location"
-msgstr ""
-
-#: customizer/class-customize.php:112
-msgid "Contact Email"
-msgstr ""
-
-#: customizer/class-customize.php:116
-msgid "Contact Phone"
-msgstr ""
-
-#: customizer/class-customize.php:126
-msgid "Copyright Text"
-msgstr ""
-
-#: customizer/class-customize.php:135 index.php:24
-msgid "Blog - Posts List"
-msgstr ""
-
-#: customizer/class-customize.php:139
-msgid "Blog Posts List Page Title"
-msgstr ""
-
-#: customizer/class-customize.php:151 index.php:25
-msgid "There are many variations of passages"
-msgstr ""
-
-#: customizer/class-customize.php:155
-msgid "Blog Posts List Page Sub Title"
-msgstr ""
-
-#: customizer/class-customize.php:193
-msgid "eds bootstrap Pro"
-msgstr ""
-
-#: customizer/class-customize.php:194
-msgid "Go Pro"
 msgstr ""
 
 #: functions.php:47
@@ -123,37 +75,95 @@ msgstr ""
 msgid "My Account Before Login"
 msgstr ""
 
-#: functions.php:97
+#: functions.php:117
 msgid "Right Sidebar"
 msgstr ""
 
-#: functions.php:99 functions.php:108 functions.php:117 functions.php:126
-#: functions.php:136 functions.php:146 functions.php:156
+#: functions.php:119 functions.php:128 functions.php:137 functions.php:146
+#: functions.php:156
 msgid "Add widgets here."
 msgstr ""
 
-#: functions.php:106
+#: functions.php:126
 msgid "Footer Sidebar"
 msgstr ""
 
-#: functions.php:115
+#: functions.php:135
 msgid "Footer Top  Sidebar"
 msgstr ""
 
-#: functions.php:124
+#: functions.php:144
 msgid "Home Page Slider Sidebar"
 msgstr ""
 
-#: functions.php:134
+#: functions.php:154
 msgid "Static Front Page Content "
 msgstr ""
 
-#: functions.php:144
-msgid "Woocommerce Sidebar"
+#: index.php:24
+msgid "Blog - Posts List"
 msgstr ""
 
-#: functions.php:154
-msgid "Logo Right Sidebar"
+#: index.php:25
+msgid "There are many variations of passages"
+msgstr ""
+
+#: customizer/class-customize.php:75
+msgid "Lite Theme Options"
+msgstr ""
+
+#: customizer/class-customize.php:92
+msgid "Page Layout"
+msgstr ""
+
+#: customizer/class-customize.php:97 customizer/class-customize.php:121
+#: customizer/class-customize.php:144
+msgid "Sidebar"
+msgstr ""
+
+#: customizer/class-customize.php:98 customizer/class-customize.php:122
+#: customizer/class-customize.php:145
+msgid "Without Sidebar"
+msgstr ""
+
+#: customizer/class-customize.php:116
+msgid "Blog Layout"
+msgstr ""
+
+#: customizer/class-customize.php:139
+msgid "Shop Layout"
+msgstr ""
+
+#: customizer/class-customize.php:162
+msgid "Post show"
+msgstr ""
+
+#: customizer/class-customize.php:167
+msgid "Show excerpt"
+msgstr ""
+
+#: customizer/class-customize.php:168
+msgid "Show full post"
+msgstr ""
+
+#: customizer/class-customize.php:185
+msgid "Copyright Text"
+msgstr ""
+
+#: customizer/class-customize.php:197
+msgid "Blog Posts List Page Title"
+msgstr ""
+
+#: customizer/class-customize.php:213
+msgid "Blog Posts List Page Sub Title"
+msgstr ""
+
+#: customizer/class-customize.php:251
+msgid "Hamzah Shop Pro"
+msgstr ""
+
+#: customizer/class-customize.php:252
+msgid "Go Pro"
 msgstr ""
 
 #: inc/comment-helper.php:18
@@ -185,41 +195,45 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
-#: inc/template-tags.php:18
+#: inc/pro.php:10 inc/pro.php:12
+msgid "Hamzah Premium"
+msgstr ""
+
+#: inc/template-functions.php:36
+msgid "All types"
+msgstr ""
+
+#: inc/template-functions.php:44
+msgid "Search here..."
+msgstr ""
+
+#: inc/template-functions.php:169
+msgid "My courses"
+msgstr ""
+
+#: inc/template-tags.php:19
 #, php-format
 msgctxt "post author"
 msgid "Posted by %s"
 msgstr ""
 
-#: inc/template-tags.php:21
+#: inc/template-tags.php:22
 msgid ", "
 msgstr ""
 
-#: inc/template-tags.php:40
+#: inc/template-tags.php:41
 #, php-format
 msgid "Tagged %1$s"
 msgstr ""
 
-#: inc/template-tags.php:47
+#: inc/template-tags.php:48
 #, php-format
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr ""
 
-#: inc/template-tags.php:54 template-parts/content-page.php:36
+#: inc/template-tags.php:55 template-parts/content-page.php:36
 #, php-format
 msgid "Edit %s"
-msgstr ""
-
-#: index.php:66 search.php:65
-msgid "Previous"
-msgstr ""
-
-#: index.php:67 search.php:66
-msgid "Next"
-msgstr ""
-
-#: index.php:68 search.php:67
-msgid "&nbsp;"
 msgstr ""
 
 #: template-parts/content-none.php:14
@@ -244,59 +258,305 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: template-parts/content-page.php:23 template-parts/single/content.php:39
+#: template-parts/content-page.php:23
+#: template-parts/single/content-audio.php:55
+#: template-parts/single/content-gallery.php:39
+#: template-parts/single/content-video.php:54
+#: template-parts/single/content.php:47
 msgid "Pages:"
 msgstr ""
 
-#: template-parts/content-search.php:42 template-parts/content.php:48
+#: template-parts/content-search.php:39
+#: template-parts/post/content-audio.php:68
+#: template-parts/post/content-gallery.php:51
+#: template-parts/post/content-video.php:67 template-parts/post/content.php:48
 msgid "Continue Reading"
 msgstr ""
 
-#: template-parts/parts/footer.php:46
-msgid "https://wordpress.org/"
+#: template-parts/parts/footer.php:100
+msgid "/contact"
 msgstr ""
 
-#: template-parts/parts/footer.php:46
-#, php-format
-msgid "Proudly powered by %s"
+#: template-parts/parts/footer.php:110
+msgid "/mein-konto"
 msgstr ""
 
-#: template-parts/parts/footer.php:49
-#, php-format
-msgid "Theme: %1$s by %2$s."
+#: template-parts/parts/footer.php:110
+msgid "Mon compte"
 msgstr ""
 
-#: template-parts/parts/footer.php:49
-msgid "https://edatastyle.com"
+#: template-parts/parts/footer.php:114
+msgid "/politique-modele-de-confidentialite"
 msgstr ""
 
-#. Author of the plugin/theme
-#: template-parts/parts/footer.php:49
-msgid "eDataStyle"
+#: template-parts/parts/footer.php:114
+msgid "Politique modèle de confidentialité"
 msgstr ""
 
-#: template-parts/single/content.php:34
-#, php-format
-msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+#: template-parts/parts/footer.php:118
+msgid "/agb"
 msgstr ""
 
+#: template-parts/parts/footer.php:118
+msgid "AGB"
+msgstr ""
+
+#: template-parts/parts/footer.php:119
+msgid "/impressum"
+msgstr ""
+
+#: template-parts/parts/footer.php:119
+msgid "Impressum"
+msgstr ""
+
+#: template-parts/parts/footer.php:122
+msgid "Cliquez ici pour optout google analytics"
+msgstr ""
+
+#: template-parts/single/content-audio.php:78
+#: template-parts/single/content-gallery.php:62
+#: template-parts/single/content-video.php:77
 #: template-parts/single/content.php:70
 msgid "Prev Article"
 msgstr ""
 
+#: template-parts/single/content-audio.php:79
+#: template-parts/single/content-gallery.php:63
+#: template-parts/single/content-video.php:78
 #: template-parts/single/content.php:71
 msgid "Next Article"
+msgstr ""
+
+#: template-parts/single/content.php:42
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:244
+msgid "Browse:"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:245
+msgctxt "breadcrumbs aria label"
+msgid "Breadcrumbs"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:246
+msgid "Home"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:247
+msgid "404 Not Found"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:248
+msgid "Archives"
+msgstr ""
+
+#. %s is the search query. The HTML entities are opening and closing curly quotes.
+#: vendors/breadcrumbs/breadcrumbs.php:250
+#, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr ""
+
+#. %s is the page number.
+#: vendors/breadcrumbs/breadcrumbs.php:252
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#. Minute archive title. %s is the minute time format.
+#: vendors/breadcrumbs/breadcrumbs.php:254
+#, php-format
+msgid "Minute %s"
+msgstr ""
+
+#. Weekly archive title. %s is the week date format.
+#: vendors/breadcrumbs/breadcrumbs.php:256
+#, php-format
+msgid "Week %s"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:708
+msgctxt "minute and hour archives time format"
+msgid "g:i a"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:725
+msgctxt "minute archives time format"
+msgid "i"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:742
+msgctxt "hour archives time format"
+msgid "g a"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:758
+#: vendors/breadcrumbs/breadcrumbs.php:787
+#: vendors/breadcrumbs/breadcrumbs.php:814
+#: vendors/breadcrumbs/breadcrumbs.php:841
+#: vendors/breadcrumbs/breadcrumbs.php:1182
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:759
+#: vendors/breadcrumbs/breadcrumbs.php:815
+#: vendors/breadcrumbs/breadcrumbs.php:1186
+msgctxt "monthly archives date format"
+msgid "F"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:760
+#: vendors/breadcrumbs/breadcrumbs.php:1190
+msgctxt "daily archives date format"
+msgid "j"
+msgstr ""
+
+#: vendors/breadcrumbs/breadcrumbs.php:788
+msgctxt "weekly archives date format"
+msgid "W"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:12
+msgid "hamzah"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:13
+msgid "Premium"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:13
+msgid "1.0"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:14
+msgid "Buy Now - $25"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:15
+msgid "Live Demo"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:23
+msgid "hamzahshop"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:23
+msgid "Woocommerce Theme"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:24
+msgid "Free Version"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:25
+msgid "Premium Version"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:32
+msgid "Theme Options"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:38
+msgid "Blog Page Design"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:44
+msgid "Responsive Layout"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:50
+msgid "Unlimited color "
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:55
+msgid "Custom Header "
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:61
+msgid "600+ Google Fonts"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:66
+msgid "Custom Widgets 7+"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:71
+msgid "Revolution Slider plugins"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:76
+msgid "woo variation button pro plugins"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:81
+msgid "Indeed My Team plugins"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:87
+msgid "Advance Theme Options"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:93
+msgid "Premium Quick View"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:99
+msgid "Premium Wishlist "
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:105
+msgid "Premium Compare"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:111
+msgid "Site Origin Page Builder"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:117
+msgid "Drag and Drop Banner"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:123
+msgid "Premium Ajax Scroll"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:129
+#: inc/admin/premium-screen/index.php:150
+msgid "Premium Zoom"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:135
+msgid "Ajax Add to Cart"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:140
+msgid "Product Layout "
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:145
+msgid "Product Gird "
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:155
+msgid "Support"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:156
+msgid "wordpress forum"
+msgstr ""
+
+#: inc/admin/premium-screen/index.php:157
+msgid "Skype, Ticket & Teamvier"
 msgstr ""
 
 #. Theme Name of the plugin/theme
 msgid "HamzahShop"
 msgstr ""
 
-#. Theme URI of the plugin/theme
-msgid "http://underscores.me/"
-msgstr ""
-
-#. Description of the plugin/theme
+#. Description of the theme
 msgid ""
 "Hamzah Shop is a simple yet modern e-commerce WordPress theme. It is "
 "esthetically minimalist, fresh-faced and bright, elegantly styled and well "
@@ -307,16 +567,18 @@ msgid ""
 "commerce needs, which allows your users to browse your product catalogs in "
 "easy but stylish grace, add items to their shopping carts intuitively, and "
 "proceed to checkout and make payments, all right off your website. Official "
-"Support Forum: http://themepalace.com/support-forum/ Full Demo: http:"
-"//wenthemes.com/theme-demos/?demo=clean-commerce"
+"Support Forum: https://edatastyle.com/dwqa-questions/Full Demo: http:"
+"//edatastyle.com/product/hamzahshop/"
+msgstr ""
+
+#. URI of the theme
+msgid "http://edatastyle.com/product/hamzahshop-free/"
+msgstr ""
+
+#. Author of the theme
+msgid "proscriptsell"
 msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://edatastyle.com/"
-msgstr ""
-
-msgid ""
-"Thank you for your order. Your order has been shipped. You will receive the "
-"goods in about one to two weeks (Europe) and up to three and a half weeks "
-"(outside Europe)"
 msgstr ""
