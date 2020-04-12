@@ -27,7 +27,7 @@ steps:
   inputs:
     pollingTimeoutSec: '300'
 - script: composer install --no-interaction --prefer-dist
-    displayName: 'composer install'
+  displayName: 'composer install'
 - powershell: |
      .vendor\bin\phpunit .\wp-content\themes\hamzahshop\test --log-junit php-unit-result.xml
   displayName: 'Run tests with phpunit'

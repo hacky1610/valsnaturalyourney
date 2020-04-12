@@ -30,7 +30,7 @@ class LayoutTest extends TestCase
 			'return' => ""
         ) );
         include_once dirname( __FILE__ ) . '/../inc/template-functions.php' ;
-        showCourseMenu();
+        sharonne_account_button();
         $this->assertNotNull("");
     }
 
