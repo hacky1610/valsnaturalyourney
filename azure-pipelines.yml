@@ -29,7 +29,7 @@ steps:
 - script: composer install --no-interaction --prefer-dist
   displayName: 'composer install'
 - powershell: |
-      . ./_build/runTests.ps1
+      . ./_build/runTest.ps1
       Run-Tests -PhpUnit $($Env:BUILD_SOURCESDIRECTORY)\vendor\bin\phpunit -Folder $($Env:BUILD_SOURCESDIRECTORY)\wp-content\themes\hamzahshop\test -ResultFiler phpTestResult.xml
   displayName: 'Run tests with phpunit'
 
