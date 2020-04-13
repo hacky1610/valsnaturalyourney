@@ -32,4 +32,11 @@ steps:
       . ./_build/runTest.ps1
       Run-Tests
   displayName: 'Run tests with phpunit'
+  continueOnError: true
+  ignoreLASTEXITCODE: true
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: './phpTestResults.xml'
+    testRunTitle: 'Test results for PHP'
+  displayName: 'Publish PhpUnit Testresults'
 

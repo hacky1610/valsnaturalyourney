@@ -2,7 +2,7 @@ function Run-Tests {
     $location = Get-Location
     $PhpUnit = "$location/vendor/bin/phpunit"
     $Folder = "$location/wp-content/themes/hamzahshop/test"
-    $ResultFile = "Foo.xml"
+    $ResultFile = "phpTestResults.xml"
 
     if(!(Test-Path -Path $Folder)) {
         Write-Error "The Folder $Folder does not exist"
