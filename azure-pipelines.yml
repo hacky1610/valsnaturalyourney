@@ -30,6 +30,6 @@ steps:
   displayName: 'composer install'
 - powershell: |
       . ./_build/runTest.ps1
-      Run-Tests -PhpUnit $($env:BUILD_SOURCESDIRECTORY)\vendor\bin\phpunit -Folder $($env:BUILD_SOURCESDIRECTORY)\wp-content\themes\hamzahshop\test -ResultFiler phpTestResult.xml
+      Run-Tests
   displayName: 'Run tests with phpunit'
 

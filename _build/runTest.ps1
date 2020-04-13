@@ -1,10 +1,9 @@
 function Run-Tests {
-    param(
-        [Parameter(Mandatory)][string]$PhpUnit,
-        [Parameter(Mandatory)][string]$Folder,
-        [Parameter(Mandatory)][string]$ResultFile
-   
-    )
+    $location = Get-Location
+    $PhpUnit = $location\..\vendor\bin\phpunit
+    $Folder = $location\..\wp-content\themes\hamzahshop\test
+    $ResultFile = "Foo.xml"
+
     if(!(Test-Path -Path $Folder)) {
         Write-Error "The Folder $Folder does not exist"
     }
