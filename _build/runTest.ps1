@@ -1,7 +1,7 @@
 function Run-Tests {
     $location = Get-Location
-    $PhpUnit = "$location\..\vendor\bin\phpunit"
-    $Folder = "$location\..\wp-content\themes\hamzahshop\test"
+    $PhpUnit = "$location/vendor/bin/phpunit"
+    $Folder = "$location/wp-content/themes/hamzahshop/test"
     $ResultFile = "Foo.xml"
 
     if(!(Test-Path -Path $Folder)) {
