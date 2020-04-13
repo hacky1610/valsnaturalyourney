@@ -13,9 +13,9 @@ function Run-Tests {
     }
 
     Write-Output "Run tests of folder $Folder"
-    $outFile = php-unit-result.xml
+    $outFile = "php-unit-result.xml"
 
-    $ $PhpUnit $Folder --log-junit $outFile
+    & $PhpUnit $Folder "--log-junit" $outFile
     Convert -Source $outFile -Destination $ResultFile
 }
 
