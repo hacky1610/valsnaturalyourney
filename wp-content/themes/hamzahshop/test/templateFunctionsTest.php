@@ -11,13 +11,16 @@ use PHPUnit\Framework\TestCase;
 
 class TemplateFunctionsTest extends TestCase
 {
+    public function setUp(): void {
+        \WP_Mock::setUp();
+	}
+
     public function tearDown(): void {
-		
+        \WP_Mock::tearDown();
 	}
 
     public function testSharonneAcountButton_UserLoggedIn()
     {
-        \WP_Mock::setUp();
         \WP_Mock::userFunction( 'wp_logout_url', array(
 			'return' => 'http://example.com/foo'
         ) );
@@ -44,7 +47,6 @@ class TemplateFunctionsTest extends TestCase
 
     public function testSharonneAcountButton_UserLoggedOff()
     {
-        \WP_Mock::setUp();
         \WP_Mock::userFunction( 'wp_logout_url', array(
 			'return' => 'http://example.com/foo'
         ) );
@@ -57,10 +59,7 @@ class TemplateFunctionsTest extends TestCase
 			'return' => false
         ) );
 
-        \WP_Mock::userFunction( 'wc_get_account_endpoint_url', array(
-			'times' => 1,
-			'return' => ""
-        ) );
+ 
         include_once dirname( __FILE__ ) . '/../inc/template-functions.php' ;
         sharonne_account_button();
         $out = ob_get_contents();
