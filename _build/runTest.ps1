@@ -19,6 +19,14 @@ function Run-Tests {
     Convert -Source $outFile -Destination $ResultFile
 }
 
+function Run-LocalTests {
+    $location = Get-Location
+    $PhpUnit = "$location/vendor/bin/phpunit"
+    $Folder = "$location/wp-content/themes/hamzahshop/test"
+
+    & $PhpUnit $Folder
+}
+
 function Convert {
     param(
         [Parameter(Mandatory)][string]$Source,

@@ -9,15 +9,20 @@ use PHPUnit\Framework\TestCase;
 
 
 
-class LayoutTest extends TestCase
+class TemplateFunctionsTest extends TestCase
 {
-    public function testInitLayout()
+    public function tearDown(): void {
+		
+	}
+
+    public function testSharonneAcountButton_UserLoggedIn()
     {
         \WP_Mock::setUp();
-        \WP_Mock::userFunction( 'add_filter', array(
-			'args' => array( 'wp_nav_menu_items', 'custom_menu_links', 10, 2 ),
-			'times' => 1,
+        \WP_Mock::userFunction( 'wp_logout_url', array(
 			'return' => 'http://example.com/foo'
+        ) );
+        \WP_Mock::userFunction( 'get_permalink', array(
+			'return' => 'http://example.com/'
         ) );
 
         \WP_Mock::userFunction( 'is_user_logged_in', array(
@@ -31,7 +36,37 @@ class LayoutTest extends TestCase
         ) );
         include_once dirname( __FILE__ ) . '/../inc/template-functions.php' ;
         sharonne_account_button();
-        $this->assertNotNull("");
+        $out = ob_get_contents();
+
+        $this->assertStringContainsString("Mon compte", $out );
+        $this->assertStringContainsString("Mon adhésion", $out );
+    }
+
+    public function testSharonneAcountButton_UserLoggedOff()
+    {
+        \WP_Mock::setUp();
+        \WP_Mock::userFunction( 'wp_logout_url', array(
+			'return' => 'http://example.com/foo'
+        ) );
+        \WP_Mock::userFunction( 'get_permalink', array(
+			'return' => 'http://example.com/'
+        ) );
+
+        \WP_Mock::userFunction( 'is_user_logged_in', array(
+			'times' => 1,
+			'return' => false
+        ) );
+
+        \WP_Mock::userFunction( 'wc_get_account_endpoint_url', array(
+			'times' => 1,
+			'return' => ""
+        ) );
+        include_once dirname( __FILE__ ) . '/../inc/template-functions.php' ;
+        sharonne_account_button();
+        $out = ob_get_contents();
+
+        $this->assertStringContainsString("Se connecter", $out );
+
     }
 
 }
