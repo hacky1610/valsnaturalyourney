@@ -29,10 +29,6 @@ class WoocommerceTemplateTest extends TestCase
 			'return' => ''
         ) );
 
-        \WP_Mock::userFunction( 'hamzahshop_key_action_breadcrumb', array(
-			'return' => ''
-        ) );
-
         \WP_Mock::userFunction( 'get_theme_mod', array(
 			'return' => ''
         ) );

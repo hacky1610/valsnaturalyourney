@@ -21,26 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'shop' ); ?>
-<!-- Section: Page Header -->
-  <section class="section-page-header">
-  <div class="container">
-    <div class="row"> 
-      
-      <!-- Page Title -->
-      <div class="col-md-6">
-			<h1 class="woocommerce-products-header__title page-title"><?php the_title(); ?></h1>
-		
-       </div>
-       <!-- Page Title -->
-      <div class="col-md-6">
-     <?php hamzahshop_key_action_breadcrumb();?>
-      </div> 
-       
-
-   </div>
-  </div>
-</section>
-<!-- /Section: Page Header -->
 
 <div class="content-area blog-page-area details-page">
     <main id="main" class="site-main" role="main">

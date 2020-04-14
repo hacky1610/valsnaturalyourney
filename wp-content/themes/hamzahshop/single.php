@@ -18,10 +18,6 @@ get_header(); ?>
                 <?php the_title( '<h1 class="entry-title blog-post-title">', '</h1>' );?>	
 				
             </div>
-            <div class="col-md-6">
-            	<?php hamzahshop_key_action_breadcrumb();?>
-            </div>
-            
             <!-- /Page Title -->
 
         </div>
