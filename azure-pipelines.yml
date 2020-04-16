@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  phpVersion: 7.2
+  phpVersion: 7.4
 
 steps:
 - task: SonarCloudPrepare@1
@@ -26,3 +26,22 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+- script: composer install --no-interaction --prefer-dist
+  displayName: 'composer install'
+- powershell: |
+      . ./_build/runTest.ps1
+      Run-Tests
+  displayName: 'Run tests with phpunit'
+  continueOnError: true
+  ignoreLASTEXITCODE: true
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: './phpTestResults.xml'
+    testRunTitle: 'Test results for PHP'
+  displayName: 'Publish PhpUnit Testresults'
+- powershell: |
+    if (Test-Path test.failed) {
+      Write-Error "Test failed"
+    }
+  displayName: 'Test Status'
+

@@ -25,12 +25,6 @@ get_header(); ?>
         <?php the_title( '<h1 class="entry-title blog-post-title">', '</h1>' );?>
        
       </div>
-      
-      <!-- /Page Title --> 
-       <div class="col-md-6">
-      <?php hamzahshop_key_action_breadcrumb();?>
-      </div>
-      
     </div>
   </div>
 </section>

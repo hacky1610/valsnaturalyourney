@@ -2,7 +2,10 @@
 /*
 !.gitignore
 !wp-content/
+!_build/
 !wp-config.php
+!composer.json
+!composer.lock
 
 # Ignore everything in the "wp-content" directory, except the "plugins"
 # and "themes" directories.
