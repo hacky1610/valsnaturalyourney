@@ -49,5 +49,34 @@ class WoocommerceTemplateTest extends TestCase
         
     }
 
+    public function testContentWidgedProduct()
+    {
+        \WP_Mock::userFunction( 'get_header', array(
+			'return' => ''
+        ) );
+        \WP_Mock::userFunction( 'the_title', array(
+			'return' => ''
+        ) );
+
+        \WP_Mock::userFunction( 'get_theme_mod', array(
+			'return' => ''
+        ) );
+
+        \WP_Mock::userFunction( 'have_posts', array(
+			'return' => false
+        ) );
+      
+        \WP_Mock::userFunction( 'get_footer', array(
+			'return' => ''
+        ) );
+        include_once dirname( __FILE__ ) . '/../woocommerce/content-widget-product.php' ;
+
+        $out = ob_get_contents();
+
+        $this->assertStringContainsString("woocommerce-products-header__title", $out );
+        $this->assertStringContainsString("section-page-header", $out );
+        
+    }
+
 
 }

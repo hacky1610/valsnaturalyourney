@@ -16,6 +16,10 @@ function Run-Tests {
     $outFile = "php-unit-result.xml"
 
     & $PhpUnit $Folder "--log-junit" $outFile
+    if ($LASTEXITCODE -eq 1) {
+        Write-Output "The npm test has failed"
+        "Failed" | Set-Content  "test.failed"
+    }
     Convert -Source $outFile -Destination $ResultFile
 }
 

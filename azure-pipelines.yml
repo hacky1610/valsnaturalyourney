@@ -39,4 +39,9 @@ steps:
     testResultsFiles: './phpTestResults.xml'
     testRunTitle: 'Test results for PHP'
   displayName: 'Publish PhpUnit Testresults'
+- powershell: |
+    if (Test-Path test.failed) {
+      Write-Error "Test failed"
+    }
+  displayName: 'Test Status'
 
