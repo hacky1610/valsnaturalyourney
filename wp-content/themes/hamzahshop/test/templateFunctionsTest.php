@@ -33,6 +33,11 @@ class TemplateFunctionsTest extends TestCase
 			'return' => true
         ) );
 
+        \WP_Mock::userFunction( 'get_site_url', array(
+			'times' => 1,
+			'return' => "http:\\www.vals-natural-journey.de"
+        ) );
+        
         \WP_Mock::userFunction( 'wc_get_account_endpoint_url', array(
 			'times' => 1,
 			'return' => ""
@@ -42,7 +47,6 @@ class TemplateFunctionsTest extends TestCase
         $out = ob_get_contents();
 
         $this->assertStringContainsString("Mon compte", $out );
-        $this->assertStringContainsString("Mon adhésion", $out );
     }
 
     public function testSharonneAcountButton_UserLoggedOff()
@@ -58,6 +62,11 @@ class TemplateFunctionsTest extends TestCase
 			'times' => 1,
 			'return' => false
         ) );
+        \WP_Mock::userFunction( 'get_site_url', array(
+			'times' => 1,
+			'return' => "http:\\www.vals-natural-journey.de"
+        ) );
+        
 
  
         include_once dirname( __FILE__ ) . '/../inc/template-functions.php' ;
