@@ -45,21 +45,46 @@ class AdminTools{
     public function SendMails()
     {
         
-        if(isset($_POST['mails'])) 
+        if(isset($_POST['mails2newUsers'])) 
         { 
-            $content = $_POST['mails'];
+            $content = $_POST['mails2newUsers'];
             $array=explode( "\r\n", $content );
             for ($i = 0; $i <= count($array); $i++) 
             {
-                $this->SendMail(trim($array[$i]));
+                $mail = trim($array[$i]);
+                if(!empty($mail))
+                {
+                    $this->SendMail($mail,true);
+                }
+            }
+        }
+
+        if(isset($_POST['mails2existingUsers'])) 
+        { 
+            $content = $_POST['mails2existingUsers'];
+            $array=explode( "\r\n", $content );
+            for ($i = 0; $i <= count($array); $i++) 
+            {
+                $mail = trim($array[$i]);
+                if(!empty($mail))
+                {
+                    $this->SendMail($mail,false);
+                }
             }
         }
         $uri = $_SERVER['PHP_SELF']  . '?post_type=vnj-admin-tools&page=vnj_admin_send';
         ?>
-        
+        <h2>New Users</h2>
         <form action="<?php echo $uri; ?>" method="post">
         
-        <TEXTAREA name="mails" rows="20" cols="80"></TEXTAREA>
+        <TEXTAREA name="mails2newUsers" rows="20" cols="80"></TEXTAREA>
+        <p><input type="submit" /></p>
+       </form>
+
+        <h2>Existing Users</h2>
+        <form action="<?php echo $uri; ?>" method="post">
+        
+        <TEXTAREA name="mails2existingUsers" rows="20" cols="80"></TEXTAREA>
         <p><input type="submit" /></p>
        </form>
        <?php
@@ -73,7 +98,6 @@ class AdminTools{
             $array=explode( "\r\n", $content );
             for ($i = 0; $i <= count($array); $i++) 
             {
-              
                 $user = get_user_by( 'email', $array[$i] );
                 if(!empty($user))
                 {
@@ -92,16 +116,17 @@ class AdminTools{
        <?php
     }
 
-    function SendMail($mail)
+    function SendMail($mail,$newUser)
     {
         try {
+            echo "Send mail to $mail";
             include_once dirname( __FILE__ ) . '/RegistrationEmail.php';
             $user = get_user_by( 'email', $mail );
             $user_login = stripslashes($user->user_login);
             $key = get_password_reset_key( $user );
             $rp_link =  wp_login_url() ."?action=rp&key=$key&login=" . rawurlencode($user_login); 
             $wc_emails = new RegistrationEmail();
-            $wc_emails->trigger($user->ID,$rp_link);
+            $wc_emails->trigger($user->ID,$rp_link,$newUser);
         } catch (Exception $e) {
             echo 'Exception abgefangen: ',  $e->getMessage(), "\n";
         }
