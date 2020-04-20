@@ -25,7 +25,7 @@ if ( ! class_exists( 'WC_Email' ) ) {
         public $user_email;
 
         public $login_uri;
-
+        public $first_name;
         public $subject;
         public $heading;
 
@@ -72,6 +72,15 @@ if ( ! class_exists( 'WC_Email' ) ) {
 
             if ( $user_id ) {
                 $this->object = new WP_User( $user_id );
+                if(empty($this->object->first_name ))
+                {
+                    $this->first_name         = stripslashes( $this->object->user_login );
+                }
+                else
+                {
+                    $this->first_name         = $this->object->first_name;
+                }
+              
                 $this->user_login         = stripslashes( $this->object->user_login );
                 $this->user_email         = stripslashes( $this->object->user_email );
                 $this->recipient          = $this->user_email;
@@ -106,6 +115,7 @@ if ( ! class_exists( 'WC_Email' ) ) {
                 $this->template_html, array(
                     'email_heading'      => $this->get_heading(),
                     'user_login'         => $this->user_login,
+                    'first_name'         => $this->first_name,
                     'user_login_uri'     => $this->user_login_uri,
                     'blogname'           => $this->get_blogname(),
                     'password_generated' => $this->password_generated,

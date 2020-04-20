@@ -226,5 +226,11 @@ function custom_menu_links( $items, $args ) {
 }
 add_filter( 'wp_nav_menu_items', 'custom_menu_links', 10, 2 );
 
+function wpse_lost_password_redirect() {
+    wp_redirect( get_site_url() ."/mein-konto"); 
+    exit;
+}
+add_action('after_password_reset', 'wpse_lost_password_redirect');
+
   
 

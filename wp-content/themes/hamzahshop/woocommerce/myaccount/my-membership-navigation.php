@@ -56,9 +56,25 @@ if ( ! empty( $members_area_sections ) && is_array( $members_area_sections ) ) :
 	?>
 	<nav class="woocommerce-MyAccount-navigation wc-memberships-members-area-navigation" id="sidebar">
 		<ul>
-			<?php foreach ( $members_area_sections as $section_id => $section_data ) : ?>
+			<?php foreach ( $members_area_sections as $section_id => $section_data ) : 
+				$label = $section_data['label'];
+				if($label == "Content")
+				{
+					$label = "Cours";
+				}
+				elseif($label == "Manage")
+				{
+					$label = "Gérer";
+				}
+				elseif($label == "Back to Dashboard")
+				{
+					$label = "Retour au tableau de bord";
+				}
+
+				?>
+				
 				<li class="<?php echo esc_attr( wc_get_account_menu_item_classes( $section_id ) . ' ' . $section_data['class'] ); ?>">
-					<a href="<?php echo esc_url( $section_data['url'] ); ?>"><?php echo esc_html( $section_data['label'] ); ?></a>
+					<a href="<?php echo esc_url( $section_data['url'] ); ?>"><?php echo esc_html( $label  ); ?></a>
 				</li>
 			<?php endforeach; ?>
 		</ul>
