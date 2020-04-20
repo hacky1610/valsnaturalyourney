@@ -112,7 +112,7 @@ function vnj_checkout_register(){
 
 function sharonne_account_button(){ 
 	echo '<div class="sharonne_account_container">';
-	$myAccountUri = get_site_url() ."/mein-konto";
+	$myAccountUri = get_site_url() ."/mon-compte";
 	if (is_user_logged_in()) { ?>
 		<div class="btn-group">
 			<button class="btn dropdown-toggle user-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -227,7 +227,7 @@ function custom_menu_links( $items, $args ) {
 add_filter( 'wp_nav_menu_items', 'custom_menu_links', 10, 2 );
 
 function wpse_lost_password_redirect() {
-    wp_redirect( get_site_url() ."/mein-konto"); 
+    wp_redirect( get_site_url() ."/mon-compte"); 
     exit;
 }
 add_action('after_password_reset', 'wpse_lost_password_redirect');

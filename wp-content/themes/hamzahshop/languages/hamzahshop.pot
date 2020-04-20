@@ -278,7 +278,7 @@ msgid "/contact"
 msgstr ""
 
 #: template-parts/parts/footer.php:110
-msgid "/mein-konto"
+msgid "/mon-compte"
 msgstr ""
 
 #: template-parts/parts/footer.php:110

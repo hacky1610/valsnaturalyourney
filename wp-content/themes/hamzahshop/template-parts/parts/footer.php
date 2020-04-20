@@ -107,7 +107,7 @@
 						</div>
 
 						<div class="vnj-center">		
-							<a href="<?php echo ${$siteAddress . esc_html_e( '/mein-konto', 'hamzahshop' )};  ?>"><?php esc_html_e( 'Mon compte', 'hamzahshop' ); ?></a>
+							<a href="<?php echo ${$siteAddress . esc_html_e( '/mon-compte', 'hamzahshop' )};  ?>"><?php esc_html_e( 'Mon compte', 'hamzahshop' ); ?></a>
 						</div>
 
 						<div class="vnj-center">
