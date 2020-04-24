@@ -85,8 +85,8 @@ if ( ! class_exists( 'WC_Email' ) ) {
                 $this->user_email         = stripslashes( $this->object->user_email );
                 $this->recipient          = $this->user_email;
                 $this->user_login_uri     = $uri;
-                $this->subject = "Neue Zugangsdaten für BOOST LA POUSSE DE TES CHEVEUX";
-                $this->heading = "Zugang für BOOST LA POUSSE DE TES CHEVEUX";
+                $this->subject = "La méthode d'accès au BOOST LA POUSSE DE TES CHEVEUX a changé";
+                $this->heading = "La méthode d'accès au BOOST LA POUSSE DE TES CHEVEUX a changé";
                 if($newUser)
                 {
                     $this->template_html  = 'emails/customer-registration.php';

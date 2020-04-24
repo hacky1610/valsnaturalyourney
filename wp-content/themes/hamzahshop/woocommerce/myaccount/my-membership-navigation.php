@@ -39,68 +39,6 @@ $members_area_sections = $membership_plan ? $members_area->get_members_area_navi
 
 if ( ! empty( $members_area_sections ) && is_array( $members_area_sections ) ) :
 
-	// reinstates WooCommerce core action
-	do_action( 'woocommerce_before_account_navigation' );
 
-	/**
-	 * Fires before the members area navigation.
-	 *
-	 * @since 1.9.0
-	 *
-	 * @param \WC_Memberships_User_Membership $customer_membership the user membership displayed
-	 */
-	do_action( 'wc_memberships_members_area_before_my_membership_navigation', $customer_membership );
-
-	ob_start();
-
-	?>
-	<nav class="woocommerce-MyAccount-navigation wc-memberships-members-area-navigation" id="sidebar">
-		<ul>
-			<?php foreach ( $members_area_sections as $section_id => $section_data ) : 
-				$label = $section_data['label'];
-				if($label == "Content")
-				{
-					$label = "Cours";
-				}
-				elseif($label == "Manage")
-				{
-					$label = "Gérer";
-				}
-				elseif($label == "Back to Dashboard")
-				{
-					$label = "Retour au tableau de bord";
-				}
-
-				?>
-				
-				<li class="<?php echo esc_attr( wc_get_account_menu_item_classes( $section_id ) . ' ' . $section_data['class'] ); ?>">
-					<a href="<?php echo esc_url( $section_data['url'] ); ?>"><?php echo esc_html( $label  ); ?></a>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	</nav>
-	<?php
-
-	/**
-	 * Filters the Members Area navigation HTML.
-	 *
-	 * @since 1.9.5
-	 *
-	 * @param string $navigation HTML
-	 * @param array $members_area_sections the members area sections being output
-	 */
-	echo apply_filters( 'wc_memberships_members_area_my_membership_navigation', ob_get_clean(), $members_area_sections );
-
-	/**
-	 * Fires after the members area navigation.
-	 *
-	 * @since 1.9.0
-	 *
-	 * @param \WC_Memberships_User_Membership $customer_membership the user membership displayed
-	 */
-	do_action( 'wc_memberships_members_area_after_my_membership_navigation', $customer_membership );
-
-	// reinstates WooCommerce core action
-	do_action( 'woocommerce_after_account_navigation' );
 
 endif;

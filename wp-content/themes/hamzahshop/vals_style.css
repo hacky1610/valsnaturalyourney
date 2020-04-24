@@ -6084,3 +6084,28 @@ Account Area
   background: transparent !important;
   border-color: transparent !important;
 }
+
+/*Order*/
+.woocommerce-order a {
+  color:blue;
+}
+
+/*MemberShip*/
+.my-membership-section h2 {
+  text-align: center;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+  float: none;
+  width: initial;
+}
+
+.my-membership-content .goToCourse {
+  text-align:center;
+  font-weight:600;
+  font-size:large
+}
+
+.membership-content .post-thumbnail { /*Das Thumbnail nicht auf der CourseSeite anzeigen*/
+  display:none;
+}
