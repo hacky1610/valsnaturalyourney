@@ -66,6 +66,17 @@ function Register($api,$mail,$fname,$pays,$group) {
    $api->addSubscriber($group, $subscriber); 
 
 }
+
+function RegisterNoCountry($api,$mail,$fname,$group) {
+
+    $subscriber = [
+      'email' => $mail,
+      'name' => $fname
+    ];
+    
+   $api->addSubscriber($group, $subscriber); 
+
+}
 	
 	
 	
