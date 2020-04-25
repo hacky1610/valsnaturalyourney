@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: HamzahShop\n"
-"POT-Creation-Date: 2020-04-25 13:52+0000\n"
+"POT-Creation-Date: 2020-04-12 16:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -199,15 +199,15 @@ msgstr ""
 msgid "Hamzah Premium"
 msgstr ""
 
-#: inc/template-functions.php:33
+#: inc/template-functions.php:36
 msgid "All types"
 msgstr ""
 
-#: inc/template-functions.php:41
+#: inc/template-functions.php:44
 msgid "Search here..."
 msgstr ""
 
-#: inc/template-functions.php:123 inc/template-functions.php:228
+#: inc/template-functions.php:169
 msgid "My courses"
 msgstr ""
 
@@ -417,14 +417,6 @@ msgstr ""
 #: vendors/breadcrumbs/breadcrumbs.php:788
 msgctxt "weekly archives date format"
 msgid "W"
-msgstr ""
-
-#. %s: Site title
-#: woocommerce/emails/customer-completed-order.php:30
-msgid ""
-"Thank you for your order. Your order has been shipped. You will receive the "
-"goods in about one to two weeks (Europe) and up to three and a half weeks "
-"(outside Europe)"
 msgstr ""
 
 #: inc/admin/premium-screen/index.php:12
