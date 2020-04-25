@@ -214,19 +214,10 @@ function getCourseOverViewUri()
 	return get_site_url() ."/mon-compte/members-area/4615/my-membership-content";
 }
 
-/*function showCourseMenu(){ 
-	if (is_user_logged_in()) { ?>
-		<li id="menu-item-mycourses" class="menu-item menu-item-type-post_type menu-item-object-page ">
-		<a href="<?php echo wc_get_account_endpoint_url('members-area' ) ; ?>" aria-current="page"><?php echo esc_html__( 'My courses', 'hamzahshop' ); ?></a>
-		</li>
-		<?php
-	}
-}*/
-
 function custom_menu_links( $items, $args ) {
-	if (is_user_logged_in()) {
-		$items .= '<li><a href="'. getCourseOverViewUri() .'">' . esc_html__( 'My courses', 'hamzahshop' ) .'</a></li>';  
-	}
+	
+	$items .= '<li><a href="'. getCourseOverViewUri() .'">' . esc_html__( 'My courses', 'hamzahshop' ) .'</a></li>';  
+	
 	return $items;
 }
 add_filter( 'wp_nav_menu_items', 'custom_menu_links', 10, 2 );

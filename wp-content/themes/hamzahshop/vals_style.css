@@ -6109,3 +6109,35 @@ Account Area
 .membership-content .post-thumbnail { /*Das Thumbnail nicht auf der CourseSeite anzeigen*/
   display:none;
 }
+
+
+
+/*Login Dialog*/
+
+.get-member-area h2 {
+  text-align: center;
+}
+
+.get-member-area .more-info {
+
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+@media (min-width: 800px)
+{
+  .ou-column {
+      height: 300px;
+  }
+
+
+  .ou-column h2 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+  }
+}
