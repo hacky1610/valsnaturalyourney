@@ -1,17 +1,19 @@
 <?php
 require_once(__DIR__.'/MailerLiteFunctions.php');
 
-$mail = $_POST['email'];
-$fName = $_POST['firstName'];
-$groupName = $_POST['groupName'];
+if(array_key_exists('email', $_POST))
+{
+    $mail = $_POST['email'];
+    $fName = $_POST['firstName'];
+    $groupName = $_POST['groupName'];
+    
+    $api = GetGroupApi();
+    $id = AddGroup($api,$groupName);
+    RegisterNoCountry($api,$mail,$fName,$id);
+}
 
-if(empty($mail))
-    return;
 
-$api = GetGroupApi();
-$id = AddGroup($api,$groupName);
-RegisterNoCountry($api,$mail,$fName,$id);
-	
+
 		 
 		 
 ?>
