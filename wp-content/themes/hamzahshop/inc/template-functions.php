@@ -211,7 +211,7 @@ function hamzahshop_register_required_plugins() {
 
 function getCourseOverViewUri()
 {
-	return get_site_url() ."/mon-compte/members-area/4615/my-membership-content";
+	return get_site_url() ."/mon-compte/members-area";
 }
 
 /*function showCourseMenu(){ 

@@ -6095,12 +6095,16 @@ Account Area
   text-align: center;
 }
 
+.woocommerce-account-my-memberships  h2 {
+  text-align: center;
+}
+
 .woocommerce-account .woocommerce-MyAccount-content {
   float: none;
   width: initial;
 }
 
-.my-membership-content .goToCourse {
+.goToCourse {
   text-align:center;
   font-weight:600;
   font-size:large
