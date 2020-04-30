@@ -214,14 +214,13 @@ function getCourseOverViewUri()
 	return get_site_url() ."/mon-compte/members-area";
 }
 
-/*function showCourseMenu(){ 
-	if (is_user_logged_in()) { ?>
-		<li id="menu-item-mycourses" class="menu-item menu-item-type-post_type menu-item-object-page ">
-		<a href="<?php echo wc_get_account_endpoint_url('members-area' ) ; ?>" aria-current="page"><?php echo esc_html__( 'My courses', 'hamzahshop' ); ?></a>
-		</li>
-		<?php
+function write_log ( $log )  {
+	if ( is_array( $log ) || is_object( $log ) ) {
+	   error_log( print_r( $log, true ) );
+	} else {
+	   error_log( $log );
 	}
-}*/
+ }
 
 function custom_menu_links( $items, $args ) {
 	if (is_user_logged_in()) {
@@ -237,5 +236,45 @@ function wpse_lost_password_redirect() {
 }
 add_action('after_password_reset', 'wpse_lost_password_redirect');
 
-  
+// Scheduled Action Hook
+function MailerLiteAddToAllGroup( ) {
+	error_log("Call MailerLiteAddToAllGroup");
+    require_once(__DIR__.'/MailerLiteFunctions.php');
+    
+	$api = GetGroupApi();
+	$api->limit(5000);
+	
+	MoveToAllGroup($api);
+}
+// Schedule Cron Job Event
+function USERS_MONITORING() {
+    if ( ! wp_next_scheduled( 'USERS_MONITORING' ) ) {
+        wp_schedule_event( strtotime('07:00:00'), 'daily', 'USERS_MONITORING' );
+    }
+}
+add_action( 'USERS_MONITORING', 'MailerLiteAddToAllGroup' );
 
+// Scheduled Action Hook
+function NewMembership($plan, $args) {
+	preg_match('/(.+)\(\d+\)/', 'CHALLENGE  « BOOST LA POUSSE DE TES CHEVEUX » (38)', $matches, PREG_OFFSET_CAPTURE);
+if(count($matches) > 0)
+{
+	write_log($matches[1][0]);
+}
+else
+{
+	write_log("foo");
+}
+
+preg_match('/(.+)\(\d+\)/', 'CHALLENGE  « BOOST LA POUSSE DE TES CHEVEUX »', $matches, PREG_OFFSET_CAPTURE);
+if(count($matches) > 0)
+{
+	write_log($matches[1][0]);
+}
+else
+{
+	write_log("foo");
+}
+
+}
+add_action( 'wc_memberships_user_membership_saved', 'NewMembership',10,2 );

@@ -148,13 +148,17 @@ defined( 'ABSPATH' ) || exit;
 		foreach ($items as $item)
 		{
 			$prodName =  $item->get_name();
+			preg_match('/(.+) \(\d+\)/', $prodName, $matches, PREG_OFFSET_CAPTURE);
+			if(count($matches) > 0)
+			{
+				$prodName = $matches[1][0];
+			}
+
 			$groupName = "Customer: $prodName";
 			$id = AddGroup($api,$groupName);
 			Register($api,$mail,$fname,$pays,$id);
 		}
 	}
-
-
 
 ?>
 	</form>
