@@ -67,7 +67,7 @@ if ( ! class_exists( 'WC_Email' ) ) {
          * @param string $user_pass User password.
          * @param bool   $password_generated Whether the password was generated automatically or not.
          */
-        public function trigger( $user_id,$uri,$newUser ) {
+        public function trigger( $user_id,$uri,$subject, $templateName ) {
             $this->setup_locale();
 
             if ( $user_id ) {
@@ -85,17 +85,9 @@ if ( ! class_exists( 'WC_Email' ) ) {
                 $this->user_email         = stripslashes( $this->object->user_email );
                 $this->recipient          = $this->user_email;
                 $this->user_login_uri     = $uri;
-                $this->subject = "La méthode d'accès au BOOST LA POUSSE DE TES CHEVEUX a changé";
-                $this->heading = "La méthode d'accès au BOOST LA POUSSE DE TES CHEVEUX a changé";
-                if($newUser)
-                {
-                    $this->template_html  = 'emails/customer-registration.php';
-                }
-                else
-                {
-                    $this->template_html  = 'emails/customer-membership-change.php';
-                    
-                }
+                $this->subject = $subject; #"La méthode d'accès au BOOST LA POUSSE DE TES CHEVEUX a changé";
+                $this->heading = $subject;
+                $this->template_html  = 'emails/' . $templateName;
             }
 
             if ( $this->is_enabled() && $this->get_recipient() ) {

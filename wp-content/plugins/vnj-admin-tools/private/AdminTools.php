@@ -44,7 +44,35 @@ class AdminTools{
 
     public function SendMails()
     {
+        if(isset($_POST['welcomeMail'])) 
+        { 
+            $content = $_POST['welcomeMail'];
+            $mails=explode( "\r\n", $content );
+            for ($i = 0; $i <= count($mails); $i++) 
+            {
+                $mail = trim($mails[$i]);
+                if(!empty($mail))
+                {
+                    $this->SendMail($mail,"Bienvenue au cours BOOST LA POUSSE DE TES CHEVEUX","customer-registration.php");
+                }
+            }
+        }
+
+        $uri = $_SERVER['PHP_SELF']  . '?post_type=vnj-admin-tools&page=vnj_admin_send';
+        ?>
+        <h2>Send wellcome mail</h2>
+        <form action="<?php echo $uri; ?>" method="post">
         
+        <TEXTAREA name="welcomeMail" rows="20" cols="80"></TEXTAREA>
+        <p><input type="submit" /></p>
+       </form>
+
+       <?php
+    }
+
+    public function Migrate()
+    {
+        $subject = "La méthode d'accès au BOOST LA POUSSE DE TES CHEVEUX a changé";
         if(isset($_POST['mails2newUsers'])) 
         { 
             $content = $_POST['mails2newUsers'];
@@ -54,7 +82,7 @@ class AdminTools{
                 $mail = trim($array[$i]);
                 if(!empty($mail))
                 {
-                    $this->SendMail($mail,true);
+                    $this->SendMail($mail,$subject,"customer-migration-new.php");
                 }
             }
         }
@@ -68,11 +96,11 @@ class AdminTools{
                 $mail = trim($array[$i]);
                 if(!empty($mail))
                 {
-                    $this->SendMail($mail,false);
+                    $this->SendMail($mail,$subject,"customer-migration-existing.php");
                 }
             }
         }
-        $uri = $_SERVER['PHP_SELF']  . '?post_type=vnj-admin-tools&page=vnj_admin_send';
+        $uri = $_SERVER['PHP_SELF']  . '?post_type=vnj-admin-tools&page=vnj_admin_migrate';
         ?>
         <h2>New Users</h2>
         <form action="<?php echo $uri; ?>" method="post">
@@ -116,7 +144,7 @@ class AdminTools{
        <?php
     }
 
-    function SendMail($mail,$newUser)
+    function SendMail($mail,$subject,$mailTemplate)
     {
         try {
             echo "Send mail to $mail";
@@ -126,15 +154,17 @@ class AdminTools{
             $key = get_password_reset_key( $user );
             $rp_link =  wp_login_url() ."?action=rp&key=$key&login=" . rawurlencode($user_login); 
             $wc_emails = new RegistrationEmail();
-            $wc_emails->trigger($user->ID,$rp_link,$newUser);
+            $wc_emails->trigger($user->ID,$rp_link,$subject,$mailTemplate);
         } catch (Exception $e) {
             echo 'Exception abgefangen: ',  $e->getMessage(), "\n";
         }
     }
 
+
     public function createMenu(){
         $namespace = self::$namespace;
         add_submenu_page("edit.php?post_type=vnj-admin-tools", __('Send mail',"shop-notify"), __("Send mail","shop-notify"), 'manage_options', 'vnj_admin_send', array( $this, 'SendMails' ));
+        add_submenu_page("edit.php?post_type=vnj-admin-tools", __('Migrate',"shop-notify"), __("Migrate","shop-notify"), 'manage_options', 'vnj_admin_migrate', array( $this, 'Migrate' ));
         add_submenu_page("edit.php?post_type=vnj-admin-tools", __('Search Users',"shop-notify"), __("Search Users","shop-notify"), 'manage_options', 'vnj_admin_search', array( $this, 'SearchUsers' ));
     }
 }

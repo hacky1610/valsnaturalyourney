@@ -6,7 +6,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $first_name) ); ?></p>
 <p><?php echo  
-    "Bienvenue au cours <strong>BOOST LA POUSSE DE TES CHEVEUX</strong>. 
+    "La méthode d'accès au <strong>BOOST LA POUSSE DE TES CHEVEUX</strong> a changé. 
     Nous avons créé un nouveau compte pour vous. Votre nom d'utilisateur est <strong>" . esc_html( $user_login ) . "</strong>. 
     Il ne vous reste plus qu'à changer votre mot de passe. Pour ce faire : <br/>
     Etape 1: vous devez cliquer <a href='" . esc_url($user_login_uri ) .  "' > ici</a>.<br/>
