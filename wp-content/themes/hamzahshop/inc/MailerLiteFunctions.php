@@ -53,6 +53,8 @@ function GetGroupId($groups, $name)
 }
 
 
+
+
 function Register($api,$mail,$fname,$pays,$group) {
 
     $subscriber = [
@@ -64,7 +66,52 @@ function Register($api,$mail,$fname,$pays,$group) {
     ];
     
    $api->addSubscriber($group, $subscriber); 
+}
 
+function GetGroup($groups,$groupname)
+{
+    $foundGroup = null;
+    foreach($groups as $group)
+	{
+		if($group->name == $groupname)
+		{
+			$foundGroup = $group;
+		}
+    }
+
+    if($foundGroup == null)
+    {
+        throw new UnexpectedValueException("Group $groupname was found");
+    }
+    
+    return $foundGroup;
+}
+
+function MoveToAllGroup($api)
+{
+	$groups = $api->get();
+    $allGroup = GetGroup($groups,"All");
+	$allSubscribers = $api->getSubscribers($allGroup->id,"active");
+	
+	foreach($groups as $group)
+	{
+		if($group->name != "All")
+		{
+			$subscribers = $api->getSubscribers($group->id,"active");
+			foreach($subscribers as $subscriber)
+			{
+				if(HasSubscriber($allSubscribers,$subscriber->id) == false)
+				{
+					$subscriberBody = [
+						'email' => $subscriber->email
+					  ];
+                     $api->addSubscriber($allGroup->id, $subscriberBody); 
+					echo $subscriber->email . "moved <br/>";
+				}
+			}
+		}
+
+	}
 }
 
 function RegisterNoCountry($api,$mail,$fname,$group) {
@@ -74,8 +121,32 @@ function RegisterNoCountry($api,$mail,$fname,$group) {
       'name' => $fname
     ];
     
-   $api->addSubscriber($group, $subscriber); 
+   return $api->addSubscriber($group, $subscriber); 
+}
 
+function HasSubscriber($subscribers,$id)
+{
+    foreach($subscribers as $s)
+    {
+        if($s->id == $id)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+function AddToAll() {
+
+    $subscriber = [
+      'email' => $mail,
+      'name' => $fname,
+      'fields' => [
+        'country' => $pays
+      ]
+    ];
+    
+   $api->addSubscriber($group, $subscriber); 
 }
 	
 	
