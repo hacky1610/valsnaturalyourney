@@ -185,13 +185,6 @@ function hamzahshop_scripts() {
 	wp_enqueue_script( 'font-awesome-online', 'https://kit.fontawesome.com/eaed49667d.js' );
 	
 	wp_enqueue_script( 'hamzahshop.main', get_template_directory_uri() . '/assets/js/main.js', array(), '20151215', true );
-	wp_enqueue_script( 'vnj-memberspace', get_template_directory_uri() . '/assets/js/memberspace.js', array(), '20151216', true );
-	#wp_enqueue_script( 'paypal', get_template_directory_uri() . '/assets/js/paypal.js', array(), '20151216', true );
-
-
-	#wp_enqueue_script( 'paypal_sdk', "https://www.paypal.com/sdk/js?client-id=AWVTdMqy7GbtJztxGsVqquUo3HX-UdVyVhqSSq_a6PByf-hoqaVfm9Y3cWTvyFKdUPEowHe2WQmdJvFi&vault=true&locale=fr_FR&currency=EUR");
-
-	
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

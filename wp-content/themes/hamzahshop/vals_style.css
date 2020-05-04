@@ -5922,16 +5922,6 @@ a.tcb-button-link:hover {
   visibility: hidden;
 }
 
-/*Memberspace
-#__memberspace_memberlogin_button {
-	display:none;
-}*/
-
-.memberspace-disabled-button {
-  background-color: grey !important;
-  transform: none;
-  pointer-events: none;
-}
 
 /*Product*/
 .product_title {
