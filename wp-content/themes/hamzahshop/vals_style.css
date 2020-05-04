@@ -3551,11 +3551,11 @@ table.shop_table td {
 }
 
 /*--------------------------------------------*/
-/*  17. Checkout Page Start
-/*--------------------------------------------*/
+/*#region  17. Checkout Page Start*/
 .wishlist-left-sidebar {
   padding: 7px 0;
 }
+
 .wishlist-concept .wishlist-left-sidebar ul li a {
   border-bottom: 1px solid #f2f2f2;
   display: block;
@@ -3671,6 +3671,11 @@ table.shop_table td {
 .back-button {
   padding-top: 8px;
 }
+
+.woocommerce-error li:first-child {
+  margin-left: 20px !important;
+}
+/*#endregion */
 /*--------------------------------------------*/
 /*  18. Checkout Page Start
 /*--------------------------------------------*/
@@ -6103,3 +6108,4 @@ Account Area
 .membership-content .post-thumbnail { /*Das Thumbnail nicht auf der CourseSeite anzeigen*/
   display:none;
 }
+
