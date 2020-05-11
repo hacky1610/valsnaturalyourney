@@ -1,5 +1,5 @@
-/*
-Theme Name: HamzahShop
+/*#region Header*/
+/*Theme Name: HamzahShop
 Theme URI: http://edatastyle.com/product/hamzahshop-free/
 Author: proscriptsell
 Author URI: http://edatastyle.com/
@@ -15,11 +15,10 @@ Main Color: #bea42e
 Main Color (transparent): #bea42e87 
 Main Color: Dark Gold #8d781b
 
-
-
 */
-/*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
+
+/*#endregion*/
+/*#region TABLE OF CONTENTS:
 ----------------------------------------------------------------	
  1. Theme Default CSS (body, link color, section etc)
     2. Header Area CSS
@@ -76,11 +75,9 @@ Main Color: Dark Gold #8d781b
     25. Scroll Up Start
 	26. Video Page
 
------------------------------------------------------------------------------------*/
+#endregion*/
 
-/*----------------------------------------*/
-/*  1. Theme Default CSS
-/*----------------------------------------*/
+/* #region Theme Default CSS*/
 /* Theme color: bea42e*/
 
 * {
@@ -409,7 +406,7 @@ label {
 .area-padding {
   margin-top: 30px;
 }
-/*----------------------------------------*/
+/*#endregion*/
 /*  2. Header Area CSS
 /*----------------------------------------*/
 /*----------------------------------------*/

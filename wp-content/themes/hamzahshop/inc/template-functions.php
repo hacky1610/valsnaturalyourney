@@ -246,35 +246,19 @@ function MailerLiteAddToAllGroup( ) {
 	
 	MoveToAllGroup($api);
 }
-// Schedule Cron Job Event
-function USERS_MONITORING() {
-    if ( ! wp_next_scheduled( 'USERS_MONITORING' ) ) {
-        wp_schedule_event( strtotime('07:00:00'), 'daily', 'USERS_MONITORING' );
+
+function InitTaskScheduler() {
+    if ( ! wp_next_scheduled( 'MailerLiteGroupSync' ) ) {
+		error_log("Init Schedule Event");
+        wp_schedule_event( time(), 'hourly', 'MailerLiteGroupSync' );
     }
 }
-add_action( 'USERS_MONITORING', 'MailerLiteAddToAllGroup' );
+add_action( 'MailerLiteGroupSync', 'MailerLiteAddToAllGroup' );
+InitTaskScheduler();
 
 // Scheduled Action Hook
 function NewMembership($plan, $args) {
 	preg_match('/(.+)\(\d+\)/', 'CHALLENGE  « BOOST LA POUSSE DE TES CHEVEUX » (38)', $matches, PREG_OFFSET_CAPTURE);
-if(count($matches) > 0)
-{
-	write_log($matches[1][0]);
-}
-else
-{
-	write_log("foo");
-}
-
-preg_match('/(.+)\(\d+\)/', 'CHALLENGE  « BOOST LA POUSSE DE TES CHEVEUX »', $matches, PREG_OFFSET_CAPTURE);
-if(count($matches) > 0)
-{
-	write_log($matches[1][0]);
-}
-else
-{
-	write_log("foo");
-}
 
 }
 add_action( 'wc_memberships_user_membership_saved', 'NewMembership',10,2 );
