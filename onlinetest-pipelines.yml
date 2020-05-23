@@ -1,0 +1,20 @@
+# PHP
+# Test and package your PHP project.
+# Add steps that run tests, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/php
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  phpVersion: 7.4
+
+steps:
+- script: |
+    sudo apt install google-chrome-stable
+    sudo apt-get install firefox
+  displayName: 'Install Chrome and Firefox'
+

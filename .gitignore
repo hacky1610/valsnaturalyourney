@@ -6,6 +6,7 @@
 !wp-config.php
 !composer.json
 !composer.lock
+!onlinetest*
 
 # Ignore everything in the "wp-content" directory, except the "plugins"
 # and "themes" directories.
