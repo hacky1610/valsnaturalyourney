@@ -2,6 +2,7 @@
 /*
 !.gitignore
 !wp-content/
+!test/
 !_build/
 !wp-config.php
 !composer.json

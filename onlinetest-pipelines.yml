@@ -18,3 +18,16 @@ steps:
     sudo apt-get install firefox
   displayName: 'Install Chrome and Firefox'
 
+- script: |
+    sudo apt install chromium-chromedriver
+  displayName: 'Install Chrome driver'
+
+- script: |
+    sudo apt install chromium-chromedriver
+  displayName: 'Install Chrome driver'
+
+- script: |
+    node ./test/foo.js
+  displayName: 'Run test'
+  
+
