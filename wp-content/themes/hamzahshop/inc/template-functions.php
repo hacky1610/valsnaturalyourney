@@ -249,16 +249,51 @@ function MailerLiteAddToAllGroup( ) {
 
 function InitTaskScheduler() {
     if ( ! wp_next_scheduled( 'MailerLiteGroupSync' ) ) {
-		error_log("Init Schedule Event");
+		write_log("Init Schedule Event");
         wp_schedule_event( time(), 'hourly', 'MailerLiteGroupSync' );
     }
 }
 add_action( 'MailerLiteGroupSync', 'MailerLiteAddToAllGroup' );
 InitTaskScheduler();
 
-// Scheduled Action Hook
+// Membership saved
 function NewMembership($plan, $args) {
 	preg_match('/(.+)\(\d+\)/', 'CHALLENGE  « BOOST LA POUSSE DE TES CHEVEUX » (38)', $matches, PREG_OFFSET_CAPTURE);
 
 }
 add_action( 'wc_memberships_user_membership_saved', 'NewMembership',10,2 );
+
+// Order complated
+//https://businessbloomer.com/woocommerce-easily-get-order-info-total-items-etc-from-order-object/
+function OrderCompleted($id) {
+	$order = wc_get_order( $id );
+  
+	// Now you have access to (see above)...
+	
+	if ( $order ) {
+		$user = $order->get_user();
+		$fname = $order->get_billing_first_name();
+		$country = $order->get_billing_country();
+	
+		#Create group in Mailerlite and add user 
+		include 'MailerLiteFunctions.php';
+		$api = GetGroupApi();
+		
+		$items = $order->get_items();
+		foreach ($items as $item)
+		{
+			$prodName =  $item->get_name();
+			preg_match('/(.+) \(\d+\)/', $prodName, $matches, PREG_OFFSET_CAPTURE);
+			if(count($matches) > 0)
+			{
+				$prodName = $matches[1][0];
+			}
+
+			$groupName = "Customer: $prodName";
+			$id = AddGroup($api,$groupName);
+			Register($api,$order->get_billing_email(),$fname,$country,$id);
+		}
+	
+	}
+}
+add_action( 'woocommerce_order_status_completed', 'OrderCompleted',10,1 );
