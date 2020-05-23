@@ -131,3 +131,4 @@ if ( !defined('ABSPATH') )
 
 /** Definiert WordPress-Variablen und fügt Dateien ein.  */
 require_once(ABSPATH . 'wp-settings.php');
+define('FS_METHOD','direct');
