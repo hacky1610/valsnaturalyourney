@@ -23,7 +23,7 @@ steps:
   displayName: 'Install Chrome driver'
 
 - script: |
-    sudo apt install chromium-chromedriver
+    sudo npm install selenium-webdriver -g
   displayName: 'Install Chrome driver'
 
 - script: |
