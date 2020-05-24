@@ -24,7 +24,7 @@ steps:
 
 - script: |
     cd test
-    sudo npm install selenium-webdriver -g
+    sudo npm install selenium-webdriver
     ls
   displayName: 'Install Selenium Web driver'
 
