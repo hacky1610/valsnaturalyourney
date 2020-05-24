@@ -29,7 +29,7 @@ steps:
   displayName: 'Install Selenium Web driver'
 
 - script: |
-    node ./test/foo.js
+    node ./test/SmokeTest.js
   displayName: 'Run test'
   
 

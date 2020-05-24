@@ -33,3 +33,5 @@ wp-content/languages/*
 
 wp-content/languages/plugins/*
 !wp-content/languages/plugins/woocommerce-subscriptions-fr_FR.po
+
+test/node_modules
