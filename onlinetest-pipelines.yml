@@ -6,6 +6,7 @@
 schedules:
 - cron: "0,10,20,30,40,50,59 * * * *"
   displayName: Every 10 Minutes
+  always: true
   branches:
     include:
     - master
