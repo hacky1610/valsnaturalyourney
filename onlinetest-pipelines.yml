@@ -3,8 +3,12 @@
 # Add steps that run tests, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/php
 
-trigger:
-- master
+schedules:
+- cron: "0,10,20,30,40,50,59 * * * *"
+  displayName: Every 10 Minutes
+  branches:
+    include:
+    - master
 
 pool:
   vmImage: 'ubuntu-latest'
