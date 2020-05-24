@@ -1,11 +1,14 @@
 const {Builder, By, Key, until} = require('selenium-webdriver');
+const firefox = require('selenium-webdriver/firefox');
  
-(async function example() {
-  let driver = await new Builder().forBrowser('chrome').build();
-  try {
-    await driver.get('https://vals-natural-journey.de/');
-    await driver.wait(until.titleIs('Accueil - Vals Natural Journe'), 1000);
-  } finally {
-    await driver.quit();
-  }
-})();
+
+
+let driver =  new Builder().forBrowser('firefox').setFirefoxOptions(new firefox.Options().headless()).build();
+
+driver.get('https://vals-natural-journey.de/').then(function(){
+    driver.getTitle().then(function(title) {
+      console.log(title);
+      driver.quit();
+      throw "Foo";
+    });
+});
