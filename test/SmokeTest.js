@@ -11,7 +11,7 @@ driver.get(siteUri).then(function(){
   },
   function(err) {
       console.log(err);
-      throw err;
+      process.exit(-1);
   }
   );
 });
