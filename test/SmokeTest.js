@@ -16,7 +16,7 @@ describe('Website', function() {
 
   describe('Product page', function() {
     it('can be loaded', async () => {
-      await driver.get(siteUri + "/product/la-recette-pour-des-cheveux-long-foo/");
+      await driver.get(siteUri + "/product/la-recette-pour-des-cheveux-longs/");
       let home = await driver.findElement(By.className('single_add_to_cart_button'))
       assert.ok(true);
   });
