@@ -6,6 +6,7 @@
 !_build/
 !wp-config.php
 !composer.json
+!package*
 !composer.lock
 !onlinetest*
 
