@@ -48,6 +48,12 @@ foreach($customer_memberships as $customer_membership)
 		if ( ! $member_post instanceof \WP_Post ) {
 			continue;
 		}
+
+		if ($member_post->post_parent != 0) //Es werden keine Children angezeigt
+		{
+			continue;
+		}
+
 		$link =  get_permalink( $member_post->ID );
 		echo "<div>";
 		echo "<h2><a href='" . $link. "'>" . get_the_title( $member_post->ID ) . "</a></h2>";
