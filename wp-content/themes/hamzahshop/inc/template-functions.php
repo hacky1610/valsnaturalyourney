@@ -297,3 +297,74 @@ function OrderCompleted($id) {
 	}
 }
 add_action( 'woocommerce_order_status_completed', 'OrderCompleted',10,1 );
+
+function GetMembership($memberships,$id)
+{
+	foreach($memberships as $membership)
+	{
+		if($membership->get_plan_id() == $id)
+		{
+			return $membership;
+		}
+	}
+	return null;
+}
+
+function displayChildCourses() {
+	$currentUserId = get_current_user_id();
+	$memberships = wc_memberships_get_user_active_memberships($currentUserId);
+	$membership = GetMembership($memberships,4615);
+
+	$d = new DateTime($membership->get_local_start_date());
+	$container = "<div class='course-container'>" . CreateCourseButton($d,5647,"la semaine 2",7) . CreateCourseButton($d,5696,"la semaine 3",14) . "</div>";
+	return $container;
+}
+add_shortcode('displayChildCourses', 'displayChildCourses');
+
+function displayWeek1And3() {
+	$currentUserId = get_current_user_id();
+	$memberships = wc_memberships_get_user_active_memberships($currentUserId);
+	$membership = GetMembership($memberships,4615);
+
+	$d = new DateTime($membership->get_local_start_date());
+	$container = "<div class='course-container'>" . CreateCourseButton($d,4910,"la semaine 1",0) . CreateCourseButton($d,5696,"la semaine 3",14) . "</div>";
+	return $container;
+}
+add_shortcode('displayWeek1And3', 'displayWeek1And3');
+
+
+function displayWeek1And2() {
+	$currentUserId = get_current_user_id();
+	$memberships = wc_memberships_get_user_active_memberships($currentUserId);
+	$membership = GetMembership($memberships,4615);
+
+	$d = new DateTime($membership->get_local_start_date());
+	$container = "<div class='course-container'>" . CreateCourseButton($d,4910,"la semaine 1",0) . CreateCourseButton($d,5647,"la semaine 2",7) . "</div>";
+	return $container;
+}
+
+add_shortcode('displayWeek1And2', 'displayWeek1And2');
+
+function CreateCourseButton($userStartDate,$postId,$name,$days)
+{
+	$postUri = get_site_url() . "/" . get_page_uri($postId);
+	$dateCurrent = new DateTime();
+
+	$interval = $dateCurrent->diff($userStartDate);
+
+	$class = "btn btn-primary btn-lg course-button";
+	$option = "";
+	$name = "<h1>$name</h1>";
+	if($interval->days < $days)
+	{
+		$timeToCourse = $days - $interval->days;
+		$class .= " disabled"; 
+		$option = "aria-disabled='true'";
+		$name = "<h1>$name</h1><p>Disponible en $timeToCourse jours</p>";
+	}
+
+	return  sprintf("<a  href='%1\$s' target='_blank' class='%3\$s' role='button' %4\$s>%2\$s</a>",$postUri,$name,$class,$option);
+
+}
+
+
