@@ -3542,10 +3542,7 @@ table.shop_table td {
   display: none !important;
 }
 
-.coupon /*Coupon Eingabe entfernen da Valérie das nicht benötigt*/
- {
-  display: none !important;
-}
+
 
 /*--------------------------------------------*/
 /*#region  17. Checkout Page Start*/
@@ -6106,3 +6103,6 @@ Account Area
   display:none;
 }
 
+.course-button {
+  margin-right: 50px;
+}
