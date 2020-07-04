@@ -310,36 +310,32 @@ function GetMembership($memberships,$id)
 	return null;
 }
 
-function displayChildCourses() {
-	$currentUserId = get_current_user_id();
-	$memberships = wc_memberships_get_user_active_memberships($currentUserId);
-	$membership = GetMembership($memberships,4615);
+function GetBoostStartDate()
+{
+	return new DateTime('2020-07-05T08:00:00.012345Z');
+}
 
-	$d = new DateTime($membership->get_local_start_date());
-	$container = "<div class='course-container'>" . CreateCourseButton($d,5647,"la semaine 2",7) . CreateCourseButton($d,5696,"la semaine 3",14) . "</div>";
+function GetMemberships()
+{
+	$currentUserId = get_current_user_id();
+	return wc_memberships_get_user_active_memberships($currentUserId);
+}
+
+function displayChildCourses() {
+	$container = "<div class='course-container'>" . CreateCourseButton(GetBoostStartDate(),5647,"la semaine 2",7) . CreateCourseButton(GetBoostStartDate(),5696,"la semaine 3",14) . "</div>";
 	return $container;
 }
 add_shortcode('displayChildCourses', 'displayChildCourses');
 
 function displayWeek1And3() {
-	$currentUserId = get_current_user_id();
-	$memberships = wc_memberships_get_user_active_memberships($currentUserId);
-	$membership = GetMembership($memberships,4615);
-
-	$d = new DateTime($membership->get_local_start_date());
-	$container = "<div class='course-container'>" . CreateCourseButton($d,4910,"la semaine 1",0) . CreateCourseButton($d,5696,"la semaine 3",14) . "</div>";
+	$container = "<div class='course-container'>" . CreateCourseButton(GetBoostStartDate(),4910,"la semaine 1",0) . CreateCourseButton(GetBoostStartDate(),5696,"la semaine 3",14) . "</div>";
 	return $container;
 }
 add_shortcode('displayWeek1And3', 'displayWeek1And3');
 
 
 function displayWeek1And2() {
-	$currentUserId = get_current_user_id();
-	$memberships = wc_memberships_get_user_active_memberships($currentUserId);
-	$membership = GetMembership($memberships,4615);
-
-	$d = new DateTime($membership->get_local_start_date());
-	$container = "<div class='course-container'>" . CreateCourseButton($d,4910,"la semaine 1",0) . CreateCourseButton($d,5647,"la semaine 2",7) . "</div>";
+	$container = "<div class='course-container'>" . CreateCourseButton(GetBoostStartDate(),4910,"la semaine 1",0) . CreateCourseButton(GetBoostStartDate(),5647,"la semaine 2",7) . "</div>";
 	return $container;
 }
 
@@ -355,9 +351,11 @@ function CreateCourseButton($userStartDate,$postId,$name,$days)
 	$class = "btn btn-primary btn-lg course-button";
 	$option = "";
 	$name = "<h1>$name</h1>";
-	if($interval->days < $days)
+	$i = new DateInterval("P7D");
+	$userStartDate->add($i);
+	if($dateCurrent->getTimestamp() < $userStartDate->getTimestamp())
 	{
-		$timeToCourse = $days - $interval->days;
+		$timeToCourse = ($dateCurrent->diff($userStartDate))->days;
 		$class .= " disabled"; 
 		$option = "aria-disabled='true'";
 		$name = "<h1>$name</h1><p>Disponible en $timeToCourse jours</p>";
@@ -366,5 +364,7 @@ function CreateCourseButton($userStartDate,$postId,$name,$days)
 	return  sprintf("<a  href='%1\$s' target='_blank' class='%3\$s' role='button' %4\$s>%2\$s</a>",$postUri,$name,$class,$option);
 
 }
+
+
 
 
