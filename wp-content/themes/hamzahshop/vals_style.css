@@ -5824,6 +5824,13 @@ a.tcb-button-link:hover {
   padding: 10px;
 }
 
+/*Blinken für Produkt hinweis*/
+.product-purchase-note p {
+  font-size: 18px;
+  animation: blinker 2s linear infinite;
+  background-color:#bea42e
+}
+
 /*Product Page*/
 .woocommerce-Reviews-title span {
   font-size: 17px;
