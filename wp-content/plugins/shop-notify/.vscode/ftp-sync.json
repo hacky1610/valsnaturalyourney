@@ -1,0 +1,31 @@
+{
+    "remotePath": "./WordPress_02/wp-content/plugins/shop-notify",
+    "host": "ftp.strato.de",
+    "username": "vals-natural-journey.de",
+    "password": "Daytona1610!",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": true,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\test\\",
+        "\\composer.json",
+        "\\composer.lock",
+        "\\README.md",
+        "\\.DS_Store",
+        "\\vendor",
+        "\\node_modules"
+
+    ],
+    "generatedFiles": {
+        "uploadOnSave": false,
+        "extensionsToInclude": [],
+        "path": ""
+    }
+}

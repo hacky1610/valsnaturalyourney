@@ -1,0 +1,100 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+variables:
+  phpVersion: 7.2
+
+steps:
+- script: |
+    sudo update-alternatives --set php /usr/bin/php$(phpVersion)
+    sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
+    sudo update-alternatives --set phpdbg /usr/bin/phpdbg$(phpVersion)
+    sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
+    sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
+    php -version
+  displayName: 'Use PHP version $(phpVersion)'
+
+- script: composer install --no-interaction --prefer-dist
+  displayName: 'composer install'
+
+- powershell: |
+     phpunit test --log-junit php-unit-result.xml
+      if ($LASTEXITCODE -eq 1) {
+        Write-Output "The npm test has failed"
+        "Failed" | Set-Content  "test.failed"
+      }
+  displayName: 'Run tests with phpunit'
+  continueOnError: true
+  ignoreLASTEXITCODE: true
+
+- powershell: |
+      . ./_build/ConvertPhpUnitResult.ps1
+      Convert -source ./php-unit-result.xml -destination ./php-unit-result_converted.xml
+  displayName: 'Convert PhpUnit Result'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: './php-unit-result_converted.xml'
+    testRunTitle: 'Test results for PHP'
+  displayName: 'Publish PhpUnit Testresults'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+  displayName: 'npm install'
+
+- powershell: |
+      npm run coverage
+      if ($LASTEXITCODE -eq 1) {
+        Write-Output "The npm test has failed"
+        "Failed" | Set-Content  "test.failed"
+      }
+  displayName: 'Run test'
+  continueOnError: true
+  ignoreLASTEXITCODE: true
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: './test-results.xml'
+    testRunTitle: 'Test results for JavaScript'
+  displayName: 'Publish JS Testresults'
+
+- task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool: Cobertura
+    summaryFileLocation: './coverage/*coverage.xml'
+    reportDirectory: './coverage'
+    
+- powershell: |
+    if (Test-Path test.failed) {
+      Write-Error "Test failed"
+    }
+  displayName: 'Test Status'
+
+
+
+# - powershell: | 
+   
+#     docker-compose up -d
+#     sleep 30
+   
+#     docker exec s_wordpress_1 wp core install --url=www.azurepipeline.hacky --title=hacky --admin_user=admin --admin_email=admin@hacky.de
+#     docker exec s_wordpress_1 bash -c "cp -R /var/woocomerce-notice /var/www/html/wp-content/plugins"
+#     docker exec s_wordpress_1 bash -c "sudo chmod -R 757 /var/www/html/wp-content/plugins/woocomerce-notice"
+#     docker exec s_wordpress_1 wp scaffold plugin-tests woocomerce-notice  
+#     docker exec s_wordpress_1 composer global require phpunit/phpunit:5.*
+
+
+#   displayName: 'Install Wordpress Cli'
+
+
+

@@ -40,7 +40,7 @@
  * Ersetze datenbankname_hier_einfuegen
  * mit dem Namen der Datenbank, die du verwenden möchtest.
  */
-define('DB_NAME', 'localwp');
+define('DB_NAME', 'test3');
 
 /**
  * Ersetze benutzername_hier_einfuegen
@@ -56,7 +56,7 @@ define('DB_PASSWORD', 'daniel');
 /**
  * Ersetze localhost mit der MySQL-Serveradresse.
  */
-define('DB_HOST', 'localhost');
+define('DB_HOST', '127.0.0.1');
 
 /**
  * Der Datenbankzeichensatz, der beim Erstellen der
@@ -132,3 +132,8 @@ if ( !defined('ABSPATH') )
 /** Definiert WordPress-Variablen und fügt Dateien ein.  */
 require_once(ABSPATH . 'wp-settings.php');
 define('FS_METHOD','direct');
+
+define('WP_SITEURL', 'http://localhost');
+define('WP_HOME', 'http://localhost');
+
+error_log("Worpress init done");

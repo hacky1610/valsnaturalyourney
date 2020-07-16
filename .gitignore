@@ -21,7 +21,7 @@ wp-content/*
 # specify (see the commented-out examples for hints on how to do this.)
 wp-content/plugins/*
 !wp-content/plugins/vnj-admin-tools/
-# !wp-content/plugins/my-directory-plugin/
+!wp-content/plugins/shop-notify/
 
 # Ignore everything in the "themes" directory, except the themes you
 # specify (see the commented-out example for a hint on how to do this.)
