@@ -45,7 +45,7 @@ class WoocommerceNotice{
 
     function __construct($datastore, $logger,$postMetaAdapter,$wpAdapter){
         $this->logger = $logger;
-        $this->logger->Call("Woocommerce_Notice Constructor");
+        $this->logger->Call();
 
         $this->datastore  = $datastore;
         $this->wpAdapter = $wpAdapter;
@@ -68,7 +68,7 @@ class WoocommerceNotice{
         add_action('save_post', array($this->notifySettingsEditor,'Save'), 10, 3 );
         add_action('plugins_loaded', 'PluginLoaded');
 
-        $this->logger->Call("Woocommerce_Notice Constructor End");
+        $this->logger->Call();
     }
 
     function init() {
@@ -93,13 +93,13 @@ class WoocommerceNotice{
     
     public function ShouldShowNotice()
     {
-        $this->logger->Call("ShouldShowNotice");
+        $this->logger->Call();
         return !wc_memberships_is_post_content_restricted();
     }
     
 
     public function loadJs($hook){
-        $this->logger->Call("loadJs");
+        $this->logger->Call();
 
         if(!$this->ShouldShowNotice())
         {
@@ -128,15 +128,15 @@ class WoocommerceNotice{
         $this->wpAdapter->EnqueueScript('notice','js/notice.js');
         $this->wpAdapter->EnqueueScript('runner','js/runner.js');
         $this->wpAdapter->EnqueueScript('bootstrap_notify','js/bootstrap-notify.js');
-        $this->logger->Call("loadJs finished");
+        $this->logger->Call();
 
     }
 
     public function loadJsAdmin( $hook ) {
-        $this->logger->Call("loadJsAdmin");
+        $this->logger->Call();
 
         //if( is_admin() ) { 
-            $this->logger->Call("Add admin scripts");
+            $this->logger->Call();
             $this->wpAdapter->EnqueueStyle("admin","css/admin.css"); 
             $this->wpAdapter->EnqueueStyle("animate","css/animate.css"); 
 
@@ -167,7 +167,7 @@ class WoocommerceNotice{
 
     public function Load()
     {
-          $this->logger->Call("loadJsAdmin");
+          $this->logger->Call();
 
           $cssLoader = new CssLoader();
           $styleList  = $this->datastore->GetStyleList();
@@ -185,14 +185,14 @@ class WoocommerceNotice{
     }
 
     public function createMenu(){
-        $this->logger->Call("CreateMenu");
+        $this->logger->Call();
 
         $namespace = self::$namespace;
 
         add_submenu_page("edit.php?post_type=shop-notify", __('Style Editor',"shop-notify"), __("Style Editor","shop-notify"), 'manage_options', 'sn_style_editor', array( $this, 'ShowStylesEditor' ));
         add_submenu_page("edit.php?post_type=shop-notify", __('Workflow Editor',"shop-notify"), __("Workflow Editor","shop-notify"), 'manage_options', 'sn_workflow_editor', array( $this, 'ShowWorkflowEditor' ));
         add_submenu_page("edit.php?post_type=shop-notify", __('Install',"shop-notify"), __("Install","shop-notify"), 'manage_options', 'sn_install', array( $this, 'Install' ));
-        $this->logger->Call("CreateMenu End");
+        $this->logger->Call();
 
     }
  

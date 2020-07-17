@@ -47,7 +47,7 @@ class WoocommerceApiLogic
                 array_push($items,self::CreateProduct($item_obj->get_product_id(),$item_obj->get_product()));
             }
     
-            $order = self::CreateOrder($wcOrder,$items);
+            $order = $this->CreateOrder($wcOrder,$items);
             array_push($orders,$order);
         }
        
@@ -64,8 +64,9 @@ class WoocommerceApiLogic
     }
 
 
-    private static function CreateOrder( $wcOrder,$items)
+    private function CreateOrder( $wcOrder,$items)
     {
+        $this->logger->Call();
         $country = WC()->countries->countries[$wcOrder->get_billing_country()];
         return new Order($wcOrder->get_id(),$wcOrder->get_billing_first_name(),$country,$wcOrder->get_date_created() ,$items);
     }

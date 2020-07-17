@@ -24,7 +24,7 @@ class WpAdapter {
 
     public function AddAction($action,$object,$function)
     {
-        $this->logger->Call("AddAction");
+        $this->logger->Call();
         $this->logger->Info("Add action: $action");
 
         add_action('wp_ajax_' . $action, array($object, $function));
@@ -33,7 +33,7 @@ class WpAdapter {
 
     public function GetPost($key)
     {
-        $this->logger->Call("GetPost");
+        $this->logger->Call();
         $this->logger->Info("Key: $key");
 
         $val = $_POST[$key];

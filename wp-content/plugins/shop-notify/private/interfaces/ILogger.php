@@ -3,5 +3,5 @@
 interface ILogger
 {
     public function Info($text);
-    public function Call($text);
+    public function Call();
 }

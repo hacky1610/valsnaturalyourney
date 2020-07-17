@@ -10,23 +10,23 @@ require_once dirname( __FILE__ ) . '/interfaces/ILogger.php';
 class Logger implements ILogger{
 
     public function Info($message) {
-        if (WP_DEBUG === true) {
-            
-            if (is_array($message) || is_object($message)) {
-                error_log(print_r($message, true));
-            } else {
-                error_log($message);
-            }
-        }
+        $this->Write($message);
     }
 
-    public function Call($message) {
+    public function Call() {
+        $this->Write("Call");      
+    }
+
+    private function Write( $message)
+    {
         if (WP_DEBUG === true) {
-            
+            $caller = debug_backtrace()[2];
+            $function = $caller['function'];
+            $class = $caller['class'];
             if (is_array($message) || is_object($message)) {
-                error_log("Call: " . print_r($message, true));
+                error_log($class . " | " .$function . " | " . print_r($message, true));
             } else {
-                error_log("Call: " . $message);
+                error_log($class . " | " . $function . " | " .$message);
             }
         }
     }

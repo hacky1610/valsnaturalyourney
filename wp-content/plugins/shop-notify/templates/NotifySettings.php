@@ -69,7 +69,7 @@ class NotifySettings {
 
     private function ShowEditorBody($post)
     {
-        $this->logger->Call("Show");
+        $this->logger->Call();
 
         $notify = new Notify($post->ID,$this->postMetaAdapter);
         $this->logger->Info("New Notify");
@@ -411,7 +411,7 @@ class NotifySettings {
 
     public function Save( $post_id, $post, $update)
     {
-        $this->logger->Call("Save");
+        $this->logger->Call();
         /*
          * In production code, $slug should be set only once in the plugin,
          * preferably as a class property, rather than in each function that needs it.

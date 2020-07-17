@@ -66,7 +66,7 @@ class WorkflowEditor {
 
     function Show()
     {
-        $this->logger->Call("Show WorkflowEditor");
+        $this->logger->Call();
         $this->LoadStyles();
         ?>
 

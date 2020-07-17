@@ -16,14 +16,14 @@ class NotifyLayoutAdapter extends AjaxAdapter {
     
     function __construct($wpAdapter,$logger){
         $this->logger = $logger;
-        $this->logger->Call("Constructor of NotifyLayoutAdapter");
+        $this->logger->Call();
         parent::__construct($wpAdapter,$logger);
         parent::AddAction( self::ACTION,$this,'GetNotifyAjax');
     }
 
     public function GetNotifyAjax()
     {
-        $this->logger->Call("GetNotifyAjax");
+        $this->logger->Call();
 
         $id =  parent::GetPost('id');
         $title =  parent::GetPost('title_content');
@@ -32,14 +32,14 @@ class NotifyLayoutAdapter extends AjaxAdapter {
         $pictureLink =  parent::GetPost('pictureLink');
 
         echo $this->GetNotifyLayout($id,$title,$message,$pictureLink,$style);
-        $this->logger->Call("End GetNotifyAjax");
+        $this->logger->Call();
         wp_die();
     }
     
 
     public function GetContentFromJson($json)
     {
-        $this->logger->Call("GetContentFromJson");
+        $this->logger->Call();
         $content = str_replace('\\',"",$json);
         $contentArray = json_decode($content);
         $textArray = array();
@@ -54,14 +54,14 @@ class NotifyLayoutAdapter extends AjaxAdapter {
                 array_push($textArray,Layout::CreateLink($value->val,$value->link));
             }
         }
-        $this->logger->Call("End GetContentFromJson");
+        $this->logger->Call();
 
         return $textArray;
     }
 
     public function GetNotifyLayout($id, $title, $message,$pictureLink,$style)
     {
-        $this->logger->Call("GetNotifyLayout");
+        $this->logger->Call();
 
         $layout = new Layout($id,$style);
         $layout->AddPicture($pictureLink);
@@ -72,7 +72,7 @@ class NotifyLayoutAdapter extends AjaxAdapter {
         $messageContent = $this->GetContentFromJson($message);
         $layout->AddToMessage(Layout::CreateText($messageContent));
 
-        $this->logger->Call("End GetNotifyLayout");
+        $this->logger->Call();
         
         return $layout->Render();
     }

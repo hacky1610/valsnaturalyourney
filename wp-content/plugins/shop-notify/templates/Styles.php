@@ -87,7 +87,7 @@ class Styles {
 
     function Show()
     {
-        $this->logger->Call("Show StyleEditor");
+        $this->logger->Call();
         $this->wpAdapter->EnqueueStyle( 'workflow-editor',  'css/adminStyleEditor.css?');
         $this->wpAdapter->RegisterScript( 'style-editor-script',  'js/adminStyleEditor.js?');
         $this->wpAdapter->LocalizeScript('style-editor-script', 'style_editor_vars', array(
