@@ -8,5 +8,6 @@ $( document ).ready(function() {
       $("#menu-item-2170").hide();
     }
 
+    $(".download-link > a").attr("download", true);
 });
 

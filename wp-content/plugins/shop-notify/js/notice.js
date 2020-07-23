@@ -190,22 +190,31 @@ class OrderNotice extends Notice {
     this.getLastOrder(lastRange).then((lastorder) => {
       const product = lastorder.items[0];
 
-      // var productId = product.id;
-      // var orderId = lastorder.id;
+      var productId = product.id;
+      var orderId = lastorder.id;
 
-      // var shownOrders = getCookie("ShownOrder").split(",");
-      // if(shownOrders.includes(orderId.toString()))
-      //	return;
+      var shownOrders = getCookie("ShownOrder").split(",");
+      if(shownOrders.includes(orderId.toString()))
+      	return;
 
-      // setCookie("ShownOrder",shownOrders + "," + orderId,2);
+      setCookie("ShownOrder",shownOrders + "," + orderId,2);
 
       let name = lastorder.name;
       name = name[0].toUpperCase() + name.substring(1);
       const image = product.productImage;
       const link = product.productPermalink;
       const time = this.getTimeString(lastorder.dateCreated);
+      let country;
+      if(lastorder.country.match(/^[AEIOU]/))
+      {
+        country = `d'${lastorder.country}`;
+      }
+      else
+      {
+        country = `de ${lastorder.country}`;
+      }
 
-      const keyVals = {ProductName: product.name, GivenName: name, Bought: time, Country: lastorder.country};
+      const keyVals = {ProductName: product.name, GivenName: name, Bought: time, Country: country};
 
       callback(keyVals, link, image);
     });

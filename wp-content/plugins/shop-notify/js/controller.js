@@ -35,6 +35,9 @@ class ControllerSerializer {
   }
 
   static deserialize(json) {
+    if(json === "")
+      return [];
+      
     const elements = JSON.parse(json.replace(/\\/g, ''));
     return this.deserializeObjectList(elements);
   }
