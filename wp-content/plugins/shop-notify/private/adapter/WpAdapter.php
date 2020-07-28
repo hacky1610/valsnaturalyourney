@@ -24,9 +24,6 @@ class WpAdapter {
 
     public function AddAction($action,$object,$function)
     {
-        $this->logger->Call();
-        $this->logger->Info("Add action: $action");
-
         add_action('wp_ajax_' . $action, array($object, $function));
         add_action('wp_ajax_nopriv_' . $action, array($object, $function));
     }

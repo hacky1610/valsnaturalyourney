@@ -111,9 +111,6 @@ class Styles {
 
          $styleList  = $this->datastore->GetStyleList();
          $currentStyle = Style::GetStyle($styleList,$this->selectedStyle);
-         $this->logger->Info("Selected Style: $($this->selectedStyle)");
-         $this->logger->Info("Style content");
-         $this->logger->Info($currentStyle);
          $cssLoader = new CssLoader();
          $cssLoader->AddStyle($currentStyle);
          $cssLoader->Load();

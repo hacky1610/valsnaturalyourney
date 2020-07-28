@@ -13,13 +13,13 @@ class Order {
     public $country;
     public $dateCreated;
 
-    function __construct($id, $name,$country,$dateCreated, $items){
+    function __construct($id, $name,$country,$dateCreated, $items,$customer_id){
         $this->id = $id;
         $this->name = $name;
         $this->items = $items;
         $this->country = $country;
         $this->dateCreated = $dateCreated;
-
+        $this->customer_id = $customer_id;
     }
 
 

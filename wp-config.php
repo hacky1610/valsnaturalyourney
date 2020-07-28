@@ -135,5 +135,3 @@ define('FS_METHOD','direct');
 
 define('WP_SITEURL', 'http://localhost');
 define('WP_HOME', 'http://localhost');
-
-error_log("Worpress init done");

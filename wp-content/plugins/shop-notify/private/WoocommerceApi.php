@@ -61,6 +61,7 @@ class WoocommerceApi
     public function GetLastOrdersAjax()
     {
         $range = $this->wpAdapter->GetPost('range');
+        $this->logger->Info("Range: $range");
         $lastOrderSaved = $this->dataStore->GetLastOrderSaved();
         $orders = null;
         if(!$lastOrderSaved)
@@ -91,8 +92,20 @@ class WoocommerceApi
             }
         }
 
-        $this->logger->Info($orders);
+        $currentUserId = get_current_user_id();
+
+        $ordersWithoutCurrentUser = array();
+        foreach ($orders as $order)
+        {
+            if($order->customer_id != $currentUserId)
+            {
+                array_push($ordersWithoutCurrentUser,$order);
+            }
+        }
+        $ordersWithoutCurrentUser = array_slice($ordersWithoutCurrentUser,0,$range);
+        $this->logger->Info($ordersWithoutCurrentUser);
         echo json_encode($orders);
+
         wp_die();
     }
 
