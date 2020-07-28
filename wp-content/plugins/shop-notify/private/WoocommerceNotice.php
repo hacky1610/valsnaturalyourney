@@ -142,7 +142,6 @@ class WoocommerceNotice{
 
             $this->wpAdapter->EnqueueStyle("admin_bootstrap","css/bootstrap.css?"); 
             $this->wpAdapter->EnqueueStyle("admin_fontselect","css/fontselect.css?"); 
-            $this->wpAdapter->EnqueueStyle("jqui","css/jquery-ui.min.css?"); 
             $this->wpAdapter->EnqueueExternalStyle('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css');
             $this->wpAdapter->EnqueueExternalStyle('bootstrap_select', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css');
             $this->wpAdapter->EnqueueStyle("default","css/default.css?"); 
@@ -150,7 +149,6 @@ class WoocommerceNotice{
             // Include our custom jQuery file with WordPress Color Picker dependency
             $this->wpAdapter->EnqueueScript('logger','js/logger.js');
             $this->wpAdapter->EnqueueScript('admin_script','js/admin.js');
-            $this->wpAdapter->EnqueueScript('jqui','js/jquery-ui.min.js');
             $this->wpAdapter->EnqueueScript('common','js/common.js');
 
             $this->wpAdapter->EnqueueExternalScript('popper','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js');
