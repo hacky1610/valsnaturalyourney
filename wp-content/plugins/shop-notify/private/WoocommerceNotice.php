@@ -64,7 +64,7 @@ class WoocommerceNotice{
         add_action('admin_menu', array($this, 'createMenu'));
         add_action('get_footer', array($this, 'Load') );
         add_action('init',array($this, 'init') );
-        add_action('add_meta_boxes', array($this->notifySettingsEditor, 'AddContent') );
+        add_action('add_meta_boxes_shop-notify', array($this->notifySettingsEditor, 'AddContent') );
         add_action('save_post', array($this->notifySettingsEditor,'Save'), 10, 3 );
         add_action('plugins_loaded', 'PluginLoaded');
 
