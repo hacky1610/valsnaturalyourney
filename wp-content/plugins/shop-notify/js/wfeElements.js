@@ -99,7 +99,6 @@ class NotifyOrderEditor extends NotifyEditor {
   };
 
   randomValueChanged(o) {
-    //  this.controller.setDuration(o.target.value);
     const randomValue = $(o.target.selectedOptions[0]).val();
     this.controller.setRandomVal(randomValue);
     o.originalEvent.stopPropagation();
@@ -406,7 +405,7 @@ class Notify extends WfeElement {
 
   showPopup() {
     const notice = new OrderNotice();
-    notice.showOrder(this.ShowNotifyCallback.bind(this));
+    notice.showOrder(this.ShowNotifyCallback.bind(this),1);
   };
 };
 

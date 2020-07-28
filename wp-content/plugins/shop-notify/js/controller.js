@@ -120,7 +120,6 @@ class WfeNotifyController extends WfeBaseController {
   constructor() {
     super();
     this.data.duration = 20;
-    this.data.lastOrderRange = 4;
   }
 
   setId(id) {
@@ -198,13 +197,8 @@ class WfeNotifyOrderController extends WfeNotifyController {
 
   showPopup(notifyClosed) {
     this.notifyClosedEvent = notifyClosed;
-    let orderRange = 1;
-    if (this.getOrderAction === 'random') {
-      orderRange = this.data.lastOrderRange;
-    }
-
     const notice = new OrderNotice();
-    notice.showOrder(this.ShowNotifyCallback.bind(this), orderRange);
+    notice.showOrder(this.ShowNotifyCallback.bind(this), this.data.randomVal);
   };
 }
 

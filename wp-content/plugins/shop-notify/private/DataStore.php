@@ -10,6 +10,7 @@ class Datastore {
     static $showOrderList = "wcn_showOrderList";
     static $styleList = "sn_style_list";
     static $workflow = "sn_workflow";
+    static $orderSaved = "sn_orderSaved";
 
     private $wpDataStore;
 
@@ -31,6 +32,14 @@ class Datastore {
 
     public function SetShowOrderList($value) {
         $this->wpDataStore->Set(self::$showOrderList,$value);
+    }
+
+    public function GetLastOrderSaved() {
+        return $this->wpDataStore->Get(self::$orderSaved);
+    }
+
+    public function SetLastOrderSaved($value) {
+        $this->wpDataStore->Set(self::$orderSaved,$value);
     }
 
     public function GetWorkflow() {

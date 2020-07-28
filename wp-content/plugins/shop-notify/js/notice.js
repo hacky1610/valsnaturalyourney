@@ -15,6 +15,11 @@ function getCookie(cname) {
   return '';
 }
 
+function isAdmin()
+{
+  return $("#wpadminbar").length === 1;
+}
+
 function setCookie(cname, cvalue, exdays) {
   let d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -167,21 +172,21 @@ class Notice {
 }
 
 class OrderNotice extends Notice {
-  getLastOrders() {
+  getLastOrders(range) {
 	  const data = {
       'action': 'get_last_orders',
+      'range': range
     };
 	  return sendAjaxSync(data, JSON.parse);
   }
 
   getLastOrder(lastRange) {
     return new Promise(function(resolve, reject) {
-      this.getLastOrders().then((body) => {
-        if (lastRange === undefined) {
-          lastRange = 1;
-        }
-        const max = Math.min(body.length, lastRange);
-        resolve(body[Math.floor((Math.random() * max) + 0)]); // TODO: Random Order
+      if (lastRange === undefined) {
+        lastRange = 1;
+      }
+      this.getLastOrders(lastRange).then((body) => {
+        resolve(body[Math.floor(Math.random() * (body.length -1))]); 
       });
     }.bind(this));
   }
@@ -193,11 +198,14 @@ class OrderNotice extends Notice {
       var productId = product.id;
       var orderId = lastorder.id;
 
-      var shownOrders = getCookie("ShownOrder").split(",");
-      if(shownOrders.includes(orderId.toString()))
-      	return;
+      if(!isAdmin())
+      {
+        var shownOrders = getCookie("ShownOrder").split(",");
+        if(shownOrders.includes(orderId.toString()))
+          return;
 
-      setCookie("ShownOrder",shownOrders + "," + orderId,2);
+        setCookie("ShownOrder",shownOrders + "," + orderId,2);
+      }
 
       let name = lastorder.name;
       name = name[0].toUpperCase() + name.substring(1);

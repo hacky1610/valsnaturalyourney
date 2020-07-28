@@ -57,7 +57,7 @@ class WoocommerceNotice{
         $this->notifySettingsEditor = new NotifySettings($datastore,$logger,$postMetaAdapter,$wpAdapter);
 
         
-         new WoocommerceApi(new WoocommerceApiLogic($logger));
+         new WoocommerceApi(new WoocommerceApiLogic($logger),$this->wpAdapter,$this->datastore,$this->logger);
 
         add_action('wp_enqueue_scripts', array($this, 'loadJs'));
         add_action('admin_enqueue_scripts', array($this, 'loadJsAdmin'));

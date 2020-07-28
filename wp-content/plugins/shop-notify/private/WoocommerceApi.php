@@ -16,9 +16,16 @@ class WoocommerceApi
      * @var WoocommerceApiLogic
      */
     private $woocommerceApiLogic;
-         
-    function __construct($woocommerceApiLogic){
+    private $wpAdapter; 
+    private $dataStore; 
+    private $logger; 
+
+    
+    function __construct($woocommerceApiLogic,$wpAdapter,$dataStore,$logger){
         $this->woocommerceApiLogic = $woocommerceApiLogic;
+        $this->wpAdapter = $wpAdapter;
+        $this->dataStore = $dataStore;
+        $this->logger = $logger;
         $this->InitAjax();
     }
         
@@ -51,9 +58,41 @@ class WoocommerceApi
         wp_die();
     }
 
-    public  function GetLastOrdersAjax()
+    public function GetLastOrdersAjax()
     {
-        echo json_encode($this->woocommerceApiLogic->GetLastOrders(5));
+        $range = $this->wpAdapter->GetPost('range');
+        $lastOrderSaved = $this->dataStore->GetLastOrderSaved();
+        $orders = null;
+        if(!$lastOrderSaved)
+        {
+            $this->logger->Info("No orders stored");
+            $orders = $this->woocommerceApiLogic->GetLastOrders(20);
+            $this->dataStore->SetShowOrderList($orders);
+            $this->dataStore->SetLastOrderSaved(new DateTime());
+        }
+        else
+        {
+            $this->logger->Info("orders stored");
+            $now =  new DateTime();
+
+            $diff = abs($now->getTimestamp() - $lastOrderSaved->getTimestamp()) / 60;
+            if($diff > 10)
+            {
+                $this->logger->Info("Older than 10 minutes");
+
+                $orders = $this->woocommerceApiLogic->GetLastOrders(20);
+                $this->dataStore->SetShowOrderList($orders);
+                $this->dataStore->SetLastOrderSaved(new DateTime());
+            }
+            else
+            {
+                $this->logger->Info("Younger than 10 minutes");
+                $orders =$this->dataStore->GetShowOrderList(); 
+            }
+        }
+
+        $this->logger->Info($orders);
+        echo json_encode($orders);
         wp_die();
     }
 

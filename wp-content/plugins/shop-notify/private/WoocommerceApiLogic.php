@@ -32,10 +32,11 @@ class WoocommerceApiLogic
         return self::CreateProduct($id,wc_get_products( $args )[0]);
     }
 
-    public function GetLastOrders($count)
+    public function GetLastOrders($range)
     {          
         $args = array(
             'status' => 'completed',
+            'limit' => $range
         );
         $wcOrders =  wc_get_orders( $args );
         $orders = array();
@@ -52,8 +53,15 @@ class WoocommerceApiLogic
         }
        
         return $orders;
+    }
 
-    
+    private function GetOrdersOfUser($userId)
+    {
+        $args = array(
+            'customer_id' => $userId
+        );
+        $wcOrders =  wc_get_orders( $args );
+        $this->logger->Info($wcOrders);
     }
 
     private static function CreateProduct($id, $wcProd)
