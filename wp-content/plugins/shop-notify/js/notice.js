@@ -212,14 +212,17 @@ class OrderNotice extends Notice {
       const image = product.productImage;
       const link = product.productPermalink;
       const time = this.getTimeString(lastorder.dateCreated);
-      let country;
-      if(lastorder.country.match(/^[AEIOU]/))
+      let country = "";
+      if(lastorder.country != null)
       {
-        country = `d'${lastorder.country}`;
-      }
-      else
-      {
-        country = `de ${lastorder.country}`;
+        if(lastorder.country.match(/^[AEIOU]/))
+        {
+          country = `d'${lastorder.country}`;
+        }
+        else
+        {
+          country = `de ${lastorder.country}`;
+        }
       }
 
       const keyVals = {ProductName: product.name, GivenName: name, Bought: time, Country: country};
