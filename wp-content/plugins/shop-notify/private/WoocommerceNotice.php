@@ -29,8 +29,8 @@ include_once dirname( __FILE__ ) . '/../templates/NotifySettings.php';
 include_once dirname( __FILE__ ) . '/../templates/GeneralControls.php';
 
 class WoocommerceNotice{
-    static $version = '0.9.94';
-    static $version_file = '0.9.94';
+    static $version = '0.9.95';
+    static $version_file = '0.9.95';
     static $namespace = "shop-notify";
     private $datastore;   
     private $api;
