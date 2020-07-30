@@ -40,6 +40,8 @@ class WorkflowEditor {
             $notify = new  Notify($id,$postmetaAdapter);
             array_push($this->shopNotifyList,$notify);
         }
+        $wpAdapter->EnqueueStyle("jqui","css/jquery-ui.min.css?"); 
+        $wpAdapter->EnqueueScript('jqui','js/jquery-ui.min.js');
         $wpAdapter->EnqueueScript('notice','js/notice.js');
         $wpAdapter->EnqueueScript('controller','js/controller.js');
 
