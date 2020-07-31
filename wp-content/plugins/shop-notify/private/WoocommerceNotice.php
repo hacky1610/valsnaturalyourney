@@ -60,7 +60,6 @@ class WoocommerceNotice{
          new WoocommerceApi(new WoocommerceApiLogic($logger),$this->wpAdapter,$this->datastore,$this->logger);
 
         add_action('wp_enqueue_scripts', array($this, 'loadJs'));
-        add_action('admin_enqueue_scripts', array($this, 'loadJsAdmin'));
         add_action('admin_menu', array($this, 'createMenu'));
         add_action('get_footer', array($this, 'Load') );
         add_action('init',array($this, 'init') );
@@ -137,27 +136,7 @@ class WoocommerceNotice{
 
         //if( is_admin() ) { 
             $this->logger->Call();
-            $this->wpAdapter->EnqueueStyle("admin","css/admin.css"); 
-            $this->wpAdapter->EnqueueStyle("animate","css/animate.css"); 
-
-            $this->wpAdapter->EnqueueStyle("admin_bootstrap","css/bootstrap.css?"); 
-            $this->wpAdapter->EnqueueStyle("admin_fontselect","css/fontselect.css?"); 
-            $this->wpAdapter->EnqueueExternalStyle('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css');
-            $this->wpAdapter->EnqueueExternalStyle('bootstrap_select', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css');
-            $this->wpAdapter->EnqueueStyle("default","css/default.css?"); 
-             
-            // Include our custom jQuery file with WordPress Color Picker dependency
-            $this->wpAdapter->EnqueueScript('logger','js/logger.js');
-            $this->wpAdapter->EnqueueScript('admin_script','js/admin.js');
-            $this->wpAdapter->EnqueueScript('common','js/common.js');
-
-            $this->wpAdapter->EnqueueExternalScript('popper','https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js');
-            $this->wpAdapter->EnqueueExternalScript('bootstrap','https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js');
-            $this->wpAdapter->EnqueueExternalScript('bootstrap_select','https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js');
           
-            $this->wpAdapter->EnqueueScript('bootstrap_notify','js/bootstrap-notify.js');
-            $this->wpAdapter->EnqueueScript('input_mask','js/jquery.inputmask.bundle.js');
-            $this->wpAdapter->EnqueueScript('fontselect','js/jquery.fontselect.js');
           
         //}
     }
