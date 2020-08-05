@@ -6113,3 +6113,12 @@ Account Area
 .course-button {
   margin-right: 50px;
 }
+
+.course-button-disabled {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.course-button-disabled p {
+  padding-bottom: 0px;
+}

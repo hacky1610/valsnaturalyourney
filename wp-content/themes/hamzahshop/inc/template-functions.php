@@ -320,6 +320,12 @@ function hamzahshop_custom_min_cart()
 			return new DateTime('2020-07-05T08:00:00.012345Z');
 		}
 
+		function GetSTOPStartDate()
+		{
+			$membership = GetMembership(GetMemberships(),6000);
+			return new DateTime($membership->get_local_start_date());
+		}
+
 		function GetMemberships()
 		{
 			$currentUserId = get_current_user_id();
@@ -349,6 +355,51 @@ function hamzahshop_custom_min_cart()
 
 		add_shortcode('displayWeek1And2', 'displayWeek1And2');
 
+		function MyIsAdmin()
+		{
+			$user = get_userdata( get_current_user_id());
+			$user_roles = $user->roles;
+
+			if ( in_array( 'administrator', $user_roles, true ) ) {
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		function hideDays()
+		{
+			if(MyIsAdmin() == false)
+			{
+				$dateCurrent = new DateTime();
+
+				$interval = $dateCurrent->diff(GetSTOPStartDate());
+				$content = "";
+				$day = $interval->d +2;
+				for ($i = $day; $i <= 21; $i++) {
+					$content .= "#day$i {display: none;}";
+				}
+	
+				$html = "";
+				$html .= '<style id="wcn_style_sheet" type="text/css">';
+				$html .= $content;
+				$html .= '</style>';
+				echo $html;
+
+				if($day <= 5)
+				{
+					return "<h1 class='aligncenter'>Le jour $day est visible demain</h1>";
+				}
+				else
+				{
+					return "";
+				}
+			}
+		}
+		add_shortcode('hideDays', 'hideDays');
+
 		function CreateCourseButton($userStartDate, $postId, $name, $days)
 		{
 			$postUri = get_site_url() . "/" . get_page_uri($postId);
@@ -363,14 +414,13 @@ function hamzahshop_custom_min_cart()
 			$userStartDate->add($i);
 			if ($dateCurrent->getTimestamp() < $userStartDate->getTimestamp()) {
 				$timeToCourse = ($dateCurrent->diff($userStartDate))->days;
-				$class .= " disabled";
+				$class .= " disabled course-button-disabled";
 				$option = "aria-disabled='true'";
 				$name = "<h1>$name</h1><p>Disponible en $timeToCourse jours</p>";
 			}
 
 			return  sprintf("<a  href='%1\$s' target='_blank' class='%3\$s' role='button' %4\$s>%2\$s</a>", $postUri, $name, $class, $option);
 		}
-
 
 		add_action('woocommerce_order_status_changed', 'ts_auto_complete_virtual');
 
