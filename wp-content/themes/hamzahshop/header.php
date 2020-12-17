@@ -30,8 +30,8 @@
   src="https://code.jquery.com/ui/1.9.1/jquery-ui.js"
   integrity="sha256-tXuytmakTtXe6NCDgoePBXiKe1gB+VA3xRvyBs/sq94="
   crossorigin="anonymous"></script>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/bootstrap-notify.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/vnj.js"></script>
+<script src="https://vals-natural-journey.de/wp-content/themes/hamzahshop/assets/js/bootstrap-notify.js"></script>
+<script src="https://vals-natural-journey.de/wp-content/themes/hamzahshop/assets/js/vnj.js"></script>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

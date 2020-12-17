@@ -121,7 +121,7 @@ function RegisterNoCountry($api,$mail,$fname,$group) {
       'name' => $fname
     ];
     
-   return $api->addSubscriber($group, $subscriber); 
+   $api->addSubscriber($group, $subscriber); 
 }
 
 function HasSubscriber($subscribers,$id)
