@@ -12,6 +12,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
+ * VNJ: Add warning - no shipping to non EU
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
@@ -22,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 ?>
-
+<div class="alert alert-warning" style="font-size: 17px" role="alert"><b>Attention!</b> En raison du Corona Virus, il n'est actuellement pas possible d'envoyer des colis en dehors de l'Europe. Les frontières sont encore fermées. </div>
 <a href="<?php echo esc_url( wc_get_checkout_url() );?>" class="checkout-button button alt wc-forward">
 Payer
 </a>
