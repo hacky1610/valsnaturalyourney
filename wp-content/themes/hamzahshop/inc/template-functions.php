@@ -3,6 +3,8 @@ require_once('MailChimp.php');
 
 use \DrewM\MailChimp\MailChimp;
 
+
+
 /**
  * hamzahshop_custom_product_search.
  *
@@ -142,7 +144,7 @@ function hamzahshop_custom_min_cart()
 		</div>
 <?php
 			}
-			echo '</div>';
+
 		}
 
 		function getLangFromUri($uri)
@@ -265,10 +267,23 @@ function hamzahshop_custom_min_cart()
 		add_action('MailerLiteGroupSync', 'MailerLiteAddToAllGroup');
 		InitTaskScheduler();
 
-		// Membership saved
+		// New Membership (via Admin or Product sell)
 		function NewMembership($plan, $args)
 		{
-			preg_match('/(.+)\(\d+\)/', 'CHALLENGE  « BOOST LA POUSSE DE TES CHEVEUX » (38)', $matches, PREG_OFFSET_CAPTURE);
+		
+			#Create group in Mailerlite and add user 
+			include 'MailerLiteFunctions.php';
+			$api = GetGroupApi();
+			$user = get_userdata($args["user_id"]);
+			$membershipName = $plan->name;
+
+			$groupName = "Membership: $membershipName";
+			$id = AddGroup($api, $groupName);
+
+			write_log("User has started new membership");
+
+			RegisterNoCountry($api, $user->user_email, $user->display_name, $id);
+
 		}
 		add_action('wc_memberships_user_membership_saved', 'NewMembership', 10, 2);
 
