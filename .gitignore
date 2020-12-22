@@ -36,3 +36,5 @@ wp-content/languages/plugins/*
 !wp-content/languages/plugins/woocommerce-subscriptions-fr_FR.po
 
 test/node_modules
+
+wp-content/themes/hamzahshop/vendor/*

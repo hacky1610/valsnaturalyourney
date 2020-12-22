@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 
 
-class TemplateFunctionsTest extends TestCase
+class UiElementsTest extends TestCase
 {
     public function setUp(): void {
         \WP_Mock::setUp();
@@ -38,12 +38,15 @@ class TemplateFunctionsTest extends TestCase
 			'return' => "http:\\www.vals-natural-journey.de"
         ) );
         
-        \WP_Mock::userFunction( 'wc_get_account_endpoint_url', array(
-			'times' => 1,
-			'return' => ""
+    
+         \WP_Mock::userFunction( 'getCourseOverViewUri', array(
+            'times' => 1,
+            'return' => ""
         ) );
-        include_once dirname( __FILE__ ) . '/../inc/template-functions.php' ;
-        sharonne_account_button();
+
+        
+        include_once dirname( __FILE__ ) . '/../inc/UiElements.php' ;
+        (new UiElements())->ShowAccountButton();
         $out = ob_get_contents();
 
         $this->assertStringContainsString("Mon compte", $out );
@@ -69,8 +72,8 @@ class TemplateFunctionsTest extends TestCase
         
 
  
-        include_once dirname( __FILE__ ) . '/../inc/template-functions.php' ;
-        sharonne_account_button();
+         include_once dirname( __FILE__ ) . '/../inc/UiElements.php' ;
+        (new UiElements())->ShowAccountButton();
         $out = ob_get_contents();
 
         $this->assertStringContainsString("Se connecter", $out );

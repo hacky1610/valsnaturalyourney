@@ -3,6 +3,9 @@
  * Displays Main Navigation
  *
  */
+
+include_once dirname( __FILE__ ) . '../../../inc/UiElements.php' ;
+
 ?>
 <?php if ( wp_is_mobile() ) {?>
 <!-- Mobile Menu Area start -->
@@ -31,7 +34,7 @@
 					hamzahshop_custom_min_cart();
 					echo '</div>';
 					echo '<div class="col-sm-4 col-xs-4 mobile-account-button">';
-					sharonne_account_button();
+					(new UiElements())->ShowAccountButton();
 					echo '</div>';
 					echo '<div class="col-sm-4 col-xs-4">';
 					echo do_shortcode('[woocommerce_currency_switcher_drop_down_box]'); 
@@ -72,7 +75,7 @@
 						hamzahshop_custom_min_cart();
 						echo '</div>';
 						echo '<div class="col-lg-3 col-md-3 col-sm-4 account-container">';
-						sharonne_account_button();
+						(new UiElements())->ShowAccountButton();
 						echo '</div>';
 						echo '<div class="col-lg-3 col-md-3 col-sm-4 currency-container">';
 						echo do_shortcode('[woocommerce_currency_switcher_drop_down_box]'); 

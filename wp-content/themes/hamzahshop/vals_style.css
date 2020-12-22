@@ -3107,6 +3107,39 @@ ul.products li.product .product_type_variable {
   display: none !important; /*Hide Reset Variations*/
 }
 
+/*Only for christmas*/
+.woocommerce ul.products li.product a img.sales-badge {
+    width: 80px;
+    display: inline !important;
+    margin-bottom: -150px !important;
+    -webkit-animation: pulse linear 1.0s infinite;
+    animation: pulse linear 1.0s infinite;
+    position: relative;
+  }
+
+div img.sales-badge {
+    width: 80px;
+    display: inline !important;
+    margin-bottom: -150px !important;
+    -webkit-animation: pulse linear 1.0s infinite;
+    animation: pulse linear 1.0s infinite;
+    float: left;
+  }
+
+  .pulseit{
+  
+}
+@-webkit-keyframes pulse {
+  0% { width:80px; } 
+  50% { width:100px; } 
+  100% { width:80px; }
+}
+@keyframes pulse {
+  0% { width:80; } 
+  50% { width:100px; } 
+  1;
+}
+
 /*--------------------------------------------*/
 /*  15.3 Product Details Bottom Tab
 /*--------------------------------------------*/

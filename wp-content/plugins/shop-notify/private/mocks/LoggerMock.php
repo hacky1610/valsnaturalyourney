@@ -20,7 +20,7 @@ class LoggerMock implements ILogger{
         echo $message;
     }
 
-    public function Call($message) {
+    public function Call() {
         $this->messages .= $message;  
         echo $message;
 
