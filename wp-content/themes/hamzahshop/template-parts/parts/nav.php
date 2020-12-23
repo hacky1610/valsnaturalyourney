@@ -31,7 +31,7 @@ include_once dirname( __FILE__ ) . '../../../inc/UiElements.php' ;
 				<div class="MobileButtonBar">
 					<?php 
 					echo '<div class="col-sm-4 col-xs-4">'; 
-					hamzahshop_custom_min_cart();
+					(new UiElements())->getCart(WC()->cart);
 					echo '</div>';
 					echo '<div class="col-sm-4 col-xs-4 mobile-account-button">';
 					(new UiElements())->ShowAccountButton();
@@ -72,7 +72,7 @@ include_once dirname( __FILE__ ) . '../../../inc/UiElements.php' ;
 				 <div class="col-lg-2 col-md-2 hidden-sm toolbarContainer">
 					 <?php
 						echo '<div class="col-lg-3 col-md-3 col-sm-4 cart-container">'; 
-						hamzahshop_custom_min_cart();
+						(new UiElements())->getCart(WC()->cart);
 						echo '</div>';
 						echo '<div class="col-lg-3 col-md-3 col-sm-4 account-container">';
 						(new UiElements())->ShowAccountButton();

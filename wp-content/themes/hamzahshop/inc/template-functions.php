@@ -1,23 +1,5 @@
 <?php
 
-function hamzahshop_custom_min_cart()
-{
-	if (class_exists('WooCommerce')) { ?>
-		<ul class="header-r-cart">
-			<li>
-				<a class="cart" href="<?php echo esc_url(wc_get_cart_url()); ?>">
-					<?php
-					$count = esc_attr(WC()->cart->get_cart_contents_count());
-					if ($count > 0) {
-						echo $count;
-					}
-					?>
-				</a>
-			</li>
-		</ul><?php
-			}
-		}
-
 		function sharonne_language_switcher()
 		{
 			$translations = pll_the_languages(array('raw' => 1));
@@ -34,16 +16,6 @@ function hamzahshop_custom_min_cart()
 <?php
 		}
 
-		function vnj_checkout_register()
-		{
-?>
-	<p class="form-row form-row-wide create-account woocommerce-validated">
-		<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-			<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="vnj_register" type="checkbox" name="vnj_register_check" value="1"> <span>Register?</span>
-		</label>
-	</p>
-	<?php
-		}
 
 		function getLangFromUri($uri)
 		{
@@ -56,10 +28,7 @@ function hamzahshop_custom_min_cart()
 			}
 		}
 		
-		function getCourseOverViewUri()
-		{
-			return get_site_url() . "/mon-compte/members-area";
-		}
+	
 
 		function write_log($log)
 		{

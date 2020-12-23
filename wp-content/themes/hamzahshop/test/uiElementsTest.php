@@ -38,13 +38,7 @@ class UiElementsTest extends TestCase
 			'return' => "http:\\www.vals-natural-journey.de"
         ) );
         
-    
-         \WP_Mock::userFunction( 'getCourseOverViewUri', array(
-            'times' => 1,
-            'return' => ""
-        ) );
-
-        
+         
         include_once dirname( __FILE__ ) . '/../inc/UiElements.php' ;
         (new UiElements())->ShowAccountButton();
         $out = ob_get_contents();
@@ -69,15 +63,43 @@ class UiElementsTest extends TestCase
 			'times' => 1,
 			'return' => "http:\\www.vals-natural-journey.de"
         ) );
-        
-
  
          include_once dirname( __FILE__ ) . '/../inc/UiElements.php' ;
         (new UiElements())->ShowAccountButton();
         $out = ob_get_contents();
 
         $this->assertStringContainsString("Se connecter", $out );
-
     }
+
+    public function testGetCourseOverview()
+    {
+        \WP_Mock::userFunction( 'get_site_url', array(
+            'return' => 'http://example.com'
+        ) );
+
+ 
+        include_once dirname( __FILE__ ) . '/../inc/UiElements.php' ;
+        $uri = (new UiElements())->getCourseOverViewUri();
+
+        $this->assertStringContainsString("http://example.com/mon-compte/members-area", $uri );
+    }
+
+    public function testGetCart()
+    {
+        \WP_Mock::userFunction( 'wc_get_cart_url', array(
+            'return' => 'http://example.com/cart'
+        ) );
+
+ 
+        include_once dirname( __FILE__ ) . '/../inc/UiElements.php' ;
+        include_once dirname( __FILE__ ) . '/mocks/WoocommerceCartMock.php' ;
+
+        $mock = new WoocommerceCartMock();
+        (new UiElements())->getCart($mock);
+        $out = ob_get_contents();
+
+        $this->assertStringContainsString("1", $out );
+    }
+
 
 }
