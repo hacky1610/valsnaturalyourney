@@ -84,7 +84,8 @@ class UiElements {
             {
                 if($arr[$i]== 170)
                 {
-                    echo "<div class='alert alert-success' role='alert'>Please write a comment</div>";
+                    echo "<div class='alert alert-success' role='alert'>Vous voulez une dédicace pour votre enfant? Veuillez laisser son nom et votre message en commentaire.</div>";
+                    return;
                 }
             }
         }
