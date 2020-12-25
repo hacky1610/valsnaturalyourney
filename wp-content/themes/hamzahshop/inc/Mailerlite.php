@@ -24,7 +24,13 @@ class Mailerlite {
 	    }
 	    else
 	    {
-	    	throw new Exception("Error Processing Request", 1);
+	    	  $subscriber = [
+		      'email' => $mail,
+		      'name' => $fname,
+		      'fields' => [
+		        'country' => $country
+		      ]
+		    ];
 	    }
     
    		return $this->mApi->addSubscriber($group, $subscriber); 

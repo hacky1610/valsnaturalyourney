@@ -79,9 +79,13 @@ class UiElements {
     {
         foreach ( $cartArray as $cart_item_key => $cart_item ) 
         {
-            foreach($cart_item["data"]->category_ids as $id);
+            $arr = $cart_item["data"]->category_ids;
+            for($i = 0; $i < count($arr); $i++)
             {
-                echo $id;
+                if($arr[$i]== 170)
+                {
+                    echo "<div class='alert alert-success' role='alert'>Please write a comment</div>";
+                }
             }
         }
     }

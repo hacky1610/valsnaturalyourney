@@ -101,5 +101,49 @@ class UiElementsTest extends TestCase
         $this->assertStringContainsString("1", $out );
     }
 
+    public function testGetShakeComment_CategorieShake()
+    {
+        \WP_Mock::userFunction( 'wc_get_cart_url', array(
+            'return' => 'http://example.com/cart'
+        ) );
+
+ 
+        include_once dirname( __FILE__ ) . '/../inc/UiElements.php' ;
+
+          $item = [
+          'data' => (object) ['category_ids' => array(170,23)]
+        ];
+        $cartArray = array($item );
+
+
+        (new UiElements())->ShowShakeComment($cartArray);
+        $out = ob_get_contents();
+        print_r($out);
+
+        $this->assertStringContainsString("Please", $out );
+    }
+
+    public function testGetShakeComment_CategorieNotShake()
+    {
+
+        \WP_Mock::userFunction( 'wc_get_cart_url', array(
+            'return' => 'http://example.com/cart'
+        ) );
+
+ 
+        include_once dirname( __FILE__ ) . '/../inc/UiElements.php' ;
+
+          $item = [
+          'data' => (object) ['category_ids' => array(171,23)]
+        ];
+        $cartArray = array($item );
+
+
+        (new UiElements())->ShowShakeComment($cartArray);
+        $out = ob_get_contents();
+
+        $this->assertStringNotContainsString("Please", $out );
+    }
+
 
 }

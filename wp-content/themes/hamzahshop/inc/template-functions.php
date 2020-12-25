@@ -1,6 +1,7 @@
 <?php
 include_once dirname( __FILE__ ) . '/UiElements.php' ;
 
+
 		function sharonne_language_switcher()
 		{
 			$translations = pll_the_languages(array('raw' => 1));
@@ -42,8 +43,10 @@ include_once dirname( __FILE__ ) . '/UiElements.php' ;
 
 		function custom_menu_links($items, $args)
 		{
+			$uiElements = new UiElements();
+			$courseUri = $uiElements->getCourseOverViewUri();
 			if (is_user_logged_in()) {
-				$items .= '<li><a href="' . getCourseOverViewUri() . '">' . esc_html__('My courses', 'hamzahshop') . '</a></li>';
+				$items .= '<li><a href="' . $courseUri . '">' . esc_html__('My courses', 'hamzahshop') . '</a></li>';
 			}
 			return $items;
 		}
@@ -301,6 +304,7 @@ include_once dirname( __FILE__ ) . '/UiElements.php' ;
 		function before_order_comment() {
 
 			$uiElements = new UiElements();
+
 			$uiElements->ShowShakeComment(WC()->cart->get_cart() );
 		}
 
