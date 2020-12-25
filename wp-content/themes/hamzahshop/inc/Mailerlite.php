@@ -13,12 +13,19 @@ class Mailerlite {
         $this->mApi = $api;
     }
 
-    function RegisterNoCountry($mail,$fname,$group) {
+    function Register($mail,$fname,$group,$country = NULL) {
 
-	    $subscriber = [
-	      'email' => $mail,
-	      'name' => $fname
-	    ];
+    	if($country == NULL)
+    	{
+	    	$subscriber = [
+	      	'email' => $mail,
+	      	'name' => $fname
+	    	];
+	    }
+	    else
+	    {
+	    	throw new Exception("Error Processing Request", 1);
+	    }
     
    		return $this->mApi->addSubscriber($group, $subscriber); 
 	}

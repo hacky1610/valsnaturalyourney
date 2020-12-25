@@ -1,4 +1,5 @@
 <?php
+include_once dirname( __FILE__ ) . '/UiElements.php' ;
 
 		function sharonne_language_switcher()
 		{
@@ -295,3 +296,13 @@
 		    $img = '<img class="sales-badge" width="75px" height="30px" src="' . $siteUri .'/wp-content/uploads/icons/sale-christmas.png"></img>';
 		    return $img;
 		}
+
+		add_filter('woocommerce_before_order_notes', 'before_order_comment');
+		function before_order_comment() {
+
+			$uiElements = new UiElements();
+			$uiElements->ShowShakeComment(WC()->cart->get_cart() );
+		}
+
+
+		

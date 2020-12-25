@@ -28,7 +28,7 @@ class MailerliteTest extends TestCase
         $mocky =  $this->createMock(MailerliteMock::class);
         $mocky->method('addSubscriber')
             ->willReturn($retVal);
-        $res = (new Mailerlite($mocky))->RegisterNoCountry("danie.h","Daniel","MyGroup");
+        $res = (new Mailerlite($mocky))->Register("danie.h","Daniel","MyGroup","as");
         $this->assertStringContainsString("43", $res->id );
     }
 

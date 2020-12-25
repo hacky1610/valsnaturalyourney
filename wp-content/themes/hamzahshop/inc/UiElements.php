@@ -74,4 +74,15 @@ class UiElements {
         </ul>
     <?php
     }
+
+    function ShowShakeComment($cartArray)
+    {
+        foreach ( $cartArray as $cart_item_key => $cart_item ) 
+        {
+            foreach($cart_item["data"]->category_ids as $id);
+            {
+                echo $id;
+            }
+        }
+    }
 }
