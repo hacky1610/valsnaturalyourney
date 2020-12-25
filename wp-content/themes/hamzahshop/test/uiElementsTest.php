@@ -120,7 +120,7 @@ class UiElementsTest extends TestCase
         $out = ob_get_contents();
         print_r($out);
 
-        $this->assertStringContainsString("Please", $out );
+        $this->assertStringContainsString("Vous voulez une dédicace pour votre enfant", $out );
     }
 
     public function testGetShakeComment_CategorieNotShake()
@@ -142,7 +142,7 @@ class UiElementsTest extends TestCase
         (new UiElements())->ShowShakeComment($cartArray);
         $out = ob_get_contents();
 
-        $this->assertStringNotContainsString("Please", $out );
+        $this->assertStringNotContainsString("Vous voulez une dédicace pour votre enfant", $out );
     }
 
 
