@@ -33,12 +33,12 @@ class Mailerlite {
 		    ];
 	    }
     
-   		return $this->mApi->addSubscriber($group, $subscriber); 
+   		$ret =  $this->mApi->addSubscriber($group, $subscriber); 
+   		 error_log(print_r($ret, true));
 	}
 
 	function AddGroup($name)
 	{ 
-		print_r($this->mApi);
 	    $groups = $this->mApi->get();
 	    if(Mailerlite::GroupExist($groups,$name))
 	    {
@@ -83,5 +83,27 @@ class Mailerlite {
 		$id = $this->AddGroup($groupName);
 
 		return $this->Register($user->user_email, $user->display_name, $id);
+	}
+
+	function OrderCompleted($id)
+	{
+		$order = wc_get_order($id);
+		if ($order) {
+			$user = $order->get_user();
+			$fname = $order->get_billing_first_name();
+			$country = $order->get_billing_country();
+			$items = $order->get_items();
+			foreach ($items as $item) {
+				$prodName =  $item->get_name();
+				preg_match('/(.+) \(\d+\)/', $prodName, $matches, PREG_OFFSET_CAPTURE);
+				if (count($matches) > 0) {
+					$prodName = $matches[1][0];
+				}
+
+				$groupName = "Customer: $prodName";
+				$id = $this->AddGroup($groupName);
+				$this->Register($order->get_billing_email(), $fname, $id,$country);
+			}
+		}
 	}
 }
