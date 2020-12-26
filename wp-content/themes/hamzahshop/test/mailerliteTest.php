@@ -43,7 +43,7 @@ class MailerliteTest extends TestCase
     }
 
 
-    public function testAddGroup()
+    public function testAddGroup_GroupDontExist()
     {
         $mocky =  $this->createMock(MailerliteMock::class);
         $mocky->method('get')
@@ -57,6 +57,43 @@ class MailerliteTest extends TestCase
         $id = (new Mailerlite($mocky))->AddGroup("MyGroup");
           $this->assertStringContainsString("43", $id );
     }
+
+    public function testAddGroup_GroupExist()
+    {
+        $mocky =  $this->createMock(MailerliteMock::class);
+        $mocky->method('get')
+            ->willReturn(array((object) ['id' => '43','name' => "MyGroup"]));
+
+        $id = (new Mailerlite($mocky))->AddGroup("MyGroup");
+          $this->assertStringContainsString("43", $id );
+    }
+
+    public function testNewMembership()
+    {
+        \WP_Mock::userFunction( 'get_userdata', array(
+            'return' => (object) ['user_email' => 'danie.h','display_name' => 'daniel']
+        ) );
+
+        $mocky =  $this->createMock(MailerliteMock::class);
+        $mocky->method('get')
+            ->willReturn(array((object) ['id' => '43','name' => "MyGroup"]));
+        $retValUser = (object) ['id' => '43'];
+        $retValGroup = (object) ['id' => '42'];
+        $mocky->method('addSubscriber')
+            ->willReturn($retValUser);
+
+          $mocky->method('create')
+            ->willReturn($retValGroup);
+
+        $plan = (object) ['name' => "MyPlan"];
+        $args = Array('user_id'=>"1");
+
+        $res = (new Mailerlite($mocky))->NewMembership($plan,$args);
+        $this->assertEquals("43", $res->id );
+    }
+
+
+
 
 
 }

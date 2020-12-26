@@ -38,6 +38,7 @@ class Mailerlite {
 
 	function AddGroup($name)
 	{ 
+		print_r($this->mApi);
 	    $groups = $this->mApi->get();
 	    if(Mailerlite::GroupExist($groups,$name))
 	    {
@@ -70,5 +71,17 @@ class Mailerlite {
 	        }
 	    }
 	    return -1;
+	}
+
+	function NewMembership($plan, $args)
+	{
+		#Create group in Mailerlite and add user 
+		$user = get_userdata($args["user_id"]);
+		$membershipName = $plan->name;
+
+		$groupName = "Membership: $membershipName";
+		$id = $this->AddGroup($groupName);
+
+		return $this->Register($user->user_email, $user->display_name, $id);
 	}
 }

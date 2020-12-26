@@ -1,6 +1,7 @@
 <?php
 include_once dirname( __FILE__ ) . '/UiElements.php' ;
-
+include_once dirname( __FILE__ ) . '/Mailerlite.php' ;
+include_once dirname( __FILE__ ) . '/MailerliteApi.php' ;
 
 		function sharonne_language_switcher()
 		{
@@ -84,20 +85,9 @@ include_once dirname( __FILE__ ) . '/UiElements.php' ;
 		// New Membership (via Admin or Product sell)
 		function NewMembership($plan, $args)
 		{
-		
-			#Create group in Mailerlite and add user 
-			include 'MailerLiteFunctions.php';
-			$api = GetGroupApi();
-			$user = get_userdata($args["user_id"]);
-			$membershipName = $plan->name;
-
-			$groupName = "Membership: $membershipName";
-			$id = AddGroup($api, $groupName);
-
-			write_log("User has started new membership");
-
-			RegisterNoCountry($api, $user->user_email, $user->display_name, $id);
-
+			$mailerlite = new Mailerlite(MailerliteApi::GetApi());
+			$mailerlite->NewMembership($plan,$args);
+			
 		}
 		add_action('wc_memberships_user_membership_saved', 'NewMembership', 10, 2);
 
