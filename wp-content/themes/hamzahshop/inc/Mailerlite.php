@@ -132,8 +132,6 @@ class Mailerlite {
 		$groups = $this->mApi->get();
 	    $allGroup = Mailerlite::GetGroup($groups,"All");
 		$allSubscribers = $this->mApi->getSubscribers($allGroup->id,"active");
-		echo "barrrrr";
-				print_r($allSubscribers);
 		foreach($groups as $group)
 		{
 			if($group->name != "All")
