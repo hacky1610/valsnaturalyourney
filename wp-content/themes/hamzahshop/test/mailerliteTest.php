@@ -92,6 +92,76 @@ class MailerliteTest extends TestCase
         $this->assertEquals("43", $res->id );
     }
 
+    function testMoveToAllGroup_addOneSubscriber()
+    {
+
+        $mocky = $this->getMockBuilder(stdClass::class)
+                     ->setMethods(['limit','get','getSubscribers','addSubscriber'])
+                     ->getMock();
+        $mocky->method('limit');
+        $mocky->method('get')->willReturn(array((object) ['id' => '1','name' => "All"],(object) ['id' => '2','name' => "MyGroup"]));
+        $mocky->expects($this->at(2))
+            ->method('getSubscribers')
+            ->with($this->equalTo('1'),$this->equalTo('active'))
+            ->willReturn(array((object) ['id' => '11','name' => "Daniel", 'email'=>'daniel.h']));
+         $mocky
+            ->expects($this->at(3))
+            ->method('getSubscribers')
+            ->with($this->equalTo('2'),$this->equalTo('active'))
+            ->willReturn(array((object) ['id' => '22','name' => "Valerie",'email'=>'valerie.h']));
+        $mocky
+            ->expects($this->once()) 
+            ->method('addSubscriber')
+            ->with($this->equalTo('1'));
+        (new Mailerlite($mocky))->MoveToAllGroup();
+    }
+
+     function testMoveToAllGroup_addTwoSubscriber()
+    {
+
+        $mocky = $this->getMockBuilder(stdClass::class)
+                     ->setMethods(['limit','get','getSubscribers','addSubscriber'])
+                     ->getMock();
+        $mocky->method('limit');
+        $mocky->method('get')->willReturn(array((object) ['id' => '1','name' => "All"],(object) ['id' => '2','name' => "MyGroup"]));
+        $mocky->expects($this->at(2))
+            ->method('getSubscribers')
+            ->with($this->equalTo('1'),$this->equalTo('active'))
+            ->willReturn(array((object) ['id' => '11','name' => "Daniel", 'email'=>'daniel.h']));
+         $mocky
+            ->expects($this->at(3))
+            ->method('getSubscribers')
+            ->with($this->equalTo('2'),$this->equalTo('active'))
+            ->willReturn(array((object) ['id' => '22','name' => "Valerie",'email'=>'valerie.h'],(object) ['id' => '33','name' => "Sandrine",'email'=>'valerie.h']));
+        $mocky
+            ->expects($this->exactly(2)) 
+            ->method('addSubscriber');
+        (new Mailerlite($mocky))->MoveToAllGroup();
+    }
+
+    function testMoveToAllGroup_subscriberExist()
+    {
+
+        $mocky = $this->getMockBuilder(stdClass::class)
+                     ->setMethods(['limit','get','getSubscribers','addSubscriber'])
+                     ->getMock();
+        $mocky->method('limit');
+        $mocky->method('get')->willReturn(array((object) ['id' => '1','name' => "All"],(object) ['id' => '2','name' => "MyGroup"]));
+        $mocky->expects($this->at(2))
+            ->method('getSubscribers')
+            ->with($this->equalTo('1'),$this->equalTo('active'))
+            ->willReturn(array((object) ['id' => '11','name' => "Daniel", 'email'=>'daniel.h']));
+         $mocky
+            ->expects($this->at(3))
+            ->method('getSubscribers')
+            ->with($this->equalTo('2'),$this->equalTo('active'))
+            ->willReturn(array((object) ['id' => '11','name' => "Daniel",'email'=>'daniel.h']));
+        $mocky
+            ->expects($this->never()) 
+            ->method('addSubscriber');
+        (new Mailerlite($mocky))->MoveToAllGroup();
+    }
+
 
 
 

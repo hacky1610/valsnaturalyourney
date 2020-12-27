@@ -63,13 +63,9 @@ include_once dirname( __FILE__ ) . '/MailerliteApi.php' ;
 		// Scheduled Action Hook
 		function MailerLiteAddToAllGroup()
 		{
-			error_log("Call MailerLiteAddToAllGroup");
-			require_once(__DIR__ . '/MailerLiteFunctions.php');
-
-			$api = GetGroupApi();
-			$api->limit(5000);
-
-			MoveToAllGroup($api);
+			$mailerlite = new Mailerlite(MailerliteApi::GetApi());
+			$mailerlite->MoveToAllGroup();
+			write_log("MoveToAllGroup was called");
 		}
 
 		function InitTaskScheduler()

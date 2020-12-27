@@ -72,6 +72,25 @@ class Mailerlite {
 	    return -1;
 	}
 
+	private static function GetGroup($groups,$groupname)
+	{
+	    $foundGroup = null;
+	    foreach($groups as $group)
+		{
+			if($group->name == $groupname)
+			{
+				$foundGroup = $group;
+			}
+	    }
+
+	    if($foundGroup == null)
+	    {
+	        throw new UnexpectedValueException("Group $groupname was found");
+	    }
+	    
+	    return $foundGroup;
+	}
+
 	function NewMembership($plan, $args)
 	{
 		#Create group in Mailerlite and add user 
@@ -104,5 +123,48 @@ class Mailerlite {
 				$this->Register($order->get_billing_email(), $fname, $id,$country);
 			}
 		}
+	}
+
+	function MoveToAllGroup()
+	{
+		$this->mApi->limit(5000);
+
+		$groups = $this->mApi->get();
+	    $allGroup = Mailerlite::GetGroup($groups,"All");
+		$allSubscribers = $this->mApi->getSubscribers($allGroup->id,"active");
+		echo "barrrrr";
+				print_r($allSubscribers);
+		foreach($groups as $group)
+		{
+			if($group->name != "All")
+			{
+				$subscribers = $this->mApi->getSubscribers($group->id,"active");
+
+				foreach($subscribers as $subscriber)
+				{
+					if(Mailerlite::HasSubscriber($allSubscribers,$subscriber->id) == false)
+					{
+						$subscriberBody = [
+							'email' => $subscriber->email
+						  ];
+	                     $this->mApi->addSubscriber($allGroup->id, $subscriberBody); 
+						echo $subscriber->email . "moved <br/>";
+					}
+				}
+			}
+
+		}
+	}
+
+	private static function HasSubscriber($subscribers,$id)
+	{
+	    foreach($subscribers as $s)
+	    {
+	        if($s->id == $id)
+	        {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 }

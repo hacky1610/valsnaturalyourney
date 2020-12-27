@@ -13,7 +13,15 @@ class MailerliteMock {
         return array();
     }
 
-     public function create($o) {
+      public function limit() {
+    }
+
+    public function create($o) {
+    }
+
+    public function getSubscribers($id,$state)
+    {
+        
     }
 
 }
