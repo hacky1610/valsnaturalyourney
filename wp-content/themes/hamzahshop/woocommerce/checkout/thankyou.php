@@ -108,15 +108,6 @@ defined( 'ABSPATH' ) || exit;
 		echo "<p class='register_label'>Vous avez été enregistré!</p>";
 	}
 	
-	#Register as customer 
-	$mail = $order->get_billing_email();
-	$fname = $order->get_billing_first_name();
-	$pays =  WC()->countries->countries[$order->get_billing_country()];		
-
-	$result = AddToList($mail, $fname, $pays, "978f47800f");
-	
-	
-	
 	#Ask customer if he got the ebook?
 	if($order->get_payment_method() !== "bacs")
 	{
