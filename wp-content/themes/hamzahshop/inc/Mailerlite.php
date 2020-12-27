@@ -33,8 +33,7 @@ class Mailerlite {
 		    ];
 	    }
     
-   		$ret =  $this->mApi->addSubscriber($group, $subscriber); 
-   		 error_log(print_r($ret, true));
+   		return $this->mApi->addSubscriber($group, $subscriber); 
 	}
 
 	function AddGroup($name)
