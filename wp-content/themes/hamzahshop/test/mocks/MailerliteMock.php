@@ -1,27 +1,32 @@
 <?php
-class MailerliteMock {
+class MailerliteMock
+{
 
-    function __construct(){
+    public function __construct()
+    {
     }
 
-
-    public function addSubscriber() {
+    public function addSubscriber()
+    {
         return 1;
     }
 
-    public function get() {
+    public function get()
+    {
         return array();
     }
 
-      public function limit() {
-    }
-
-    public function create($o) {
-    }
-
-    public function getSubscribers($id,$state)
+    public function limit()
     {
-        
+    }
+
+    public function create($o)
+    {
+    }
+
+    public function getSubscribers($id, $state)
+    {
+
     }
 
 }
