@@ -138,4 +138,72 @@ class UiElementsTest extends TestCase
         $this->assertStringNotContainsString("Vous voulez une dédicace pour votre enfant", $out);
     }
 
+    public function testCreateCourseOverview_ButtonEnabled()
+    {
+
+        \WP_Mock::userFunction('get_site_url', array(
+            'return' => 'http://example.com',
+        ));
+
+        \WP_Mock::userFunction('get_page_uri', array(
+            'return' => 'helloWorld',
+        ));
+
+        include_once dirname(__FILE__) . '/../inc/UiElements.php';
+
+        $start = new DateTime('2020-07-05T08:00:00.012345Z');
+        $current = new DateTime('2020-07-25T08:00:00.012345Z');
+
+        $out =(new UiElements())->CreateCourseButton($start,"1","Foo",10,$current);
+
+        $this->assertStringContainsString("http://example.com/helloWorld", $out);
+        $this->assertStringNotContainsString("disabled course-button-disabled", $out);
+    }
+
+    public function testCreateCourseOverview_ButtonDisabled_6Days2Go()
+    {
+
+        \WP_Mock::userFunction('get_site_url', array(
+            'return' => 'http://example.com',
+        ));
+
+        \WP_Mock::userFunction('get_page_uri', array(
+            'return' => 'helloWorld',
+        ));
+
+        include_once dirname(__FILE__) . '/../inc/UiElements.php';
+
+        $start = new DateTime('2020-07-05T08:00:00.012345Z');
+        $current = new DateTime('2020-07-06T08:00:00.012345Z');
+
+        $out =(new UiElements())->CreateCourseButton($start,"1","Foo",7,$current);
+
+        $this->assertStringContainsString("http://example.com/helloWorld", $out);
+        $this->assertStringContainsString("disabled course-button-disabled", $out);
+        $this->assertStringContainsString("Disponible en 6 jours", $out);
+    }
+
+    public function testCreateCourseOverview_ButtonDisabled_1Day2Go()
+    {
+
+        \WP_Mock::userFunction('get_site_url', array(
+            'return' => 'http://example.com',
+        ));
+
+        \WP_Mock::userFunction('get_page_uri', array(
+            'return' => 'helloWorld',
+        ));
+
+        include_once dirname(__FILE__) . '/../inc/UiElements.php';
+
+        $start = new DateTime('2020-07-05T08:00:00.012345Z');
+        $current = new DateTime('2020-07-11T08:00:00.012345Z');
+
+        $out =(new UiElements())->CreateCourseButton($start,"1","Foo",7,$current);
+
+        $this->assertStringContainsString("http://example.com/helloWorld", $out);
+        $this->assertStringContainsString("disabled course-button-disabled", $out);
+        $this->assertStringContainsString("Disponible en 1 jours", $out);
+    }
+
 }

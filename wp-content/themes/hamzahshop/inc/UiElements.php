@@ -90,4 +90,30 @@ class UiElements {
             }
         }
     }
+
+    function CreateCourseButton($userStartDate, $postId, $name, $days,$dateCurrent = Null)
+    {
+        if(!isset($dateCurrent))
+        {
+            $dateCurrent = new DateTime();
+        }
+
+        $postUri = get_site_url() . "/" . get_page_uri($postId);
+
+        $interval = $dateCurrent->diff($userStartDate);
+
+        $class = "btn btn-primary btn-lg course-button";
+        $option = "";
+        $name = "<h1>$name</h1>";
+        $i = new DateInterval("P" . $days . "D");
+        $userStartDate->add($i);
+        if ($dateCurrent->getTimestamp() < $userStartDate->getTimestamp()) {
+            $timeToCourse = ($dateCurrent->diff($userStartDate))->days;
+            $class .= " disabled course-button-disabled";
+            $option = "aria-disabled='true'";
+            $name = "<h1>$name</h1><p>Disponible en $timeToCourse jours</p>";
+        }
+
+        return  sprintf("<a  href='%1\$s' target='_blank' class='%3\$s' role='button' %4\$s>%2\$s</a>", $postUri, $name, $class, $option);
+    }
 }
