@@ -23,7 +23,7 @@ steps:
   displayName: 'composer install'
 
 - powershell: |
-     phpunit test --log-junit php-unit-result.xml
+     php phpunit test --log-junit php-unit-result.xml
       if ($LASTEXITCODE -eq 1) {
         Write-Output "The npm test has failed"
         "Failed" | Set-Content  "test.failed"
