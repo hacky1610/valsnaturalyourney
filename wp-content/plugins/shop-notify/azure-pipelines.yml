@@ -34,7 +34,6 @@ steps:
   displayName: 'Run PhpUnit'
   continueOnError: true
   ignoreLASTEXITCODE: true
-
 #- powershell: |
 #      . ./_build/ConvertPhpUnitResult.ps1
 #      Convert -source ./php-unit-result.xml -destination ./php-unit-result_converted.xml
