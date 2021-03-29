@@ -19,11 +19,11 @@ steps:
     php -version
   displayName: 'Use PHP version $(phpVersion)'
 
-- script: composer install --no-interaction --prefer-dist
+- script: docker-compose run composer install
   displayName: 'composer install'
 
 - powershell: |
-      php ./vendor/bin/phpunit test --log-junit php-unit-result.xml
+      php vendor/phpunit/phpunit/phpunit test --log-junit php-unit-result.xml
       if ($LASTEXITCODE -eq 1) {
         Write-Output "The npm test has failed"
         "Failed" | Set-Content  "test.failed"
