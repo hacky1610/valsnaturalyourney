@@ -19,7 +19,11 @@ steps:
     php -version
   displayName: 'Use PHP version $(phpVersion)'
 
-- script: docker-compose run composer install
+- script: |
+      echo $PWD
+      cd wp-content/plugins/shop-notify
+      echo $PWD
+      docker-compose run composer install
   displayName: 'composer install'
 
 - script: |
