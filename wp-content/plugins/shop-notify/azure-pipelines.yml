@@ -20,26 +20,16 @@ steps:
   displayName: 'Use PHP version $(phpVersion)'
 
 - script: |
-      echo $PWD
-      cd wp-content/plugins/shop-notify
-      echo $PWD
       docker-compose run composer install
   displayName: 'composer install'
 
 - script: |
-      echo $PWD
-      cd wp-content/plugins/shop-notify
-      echo $PWD
-      php vendor/phpunit/phpunit/phpunit test
-  displayName: 'Run PhpUnit'
-
-- powershell: |
       php vendor/phpunit/phpunit/phpunit test --log-junit php-unit-result.xml
-      if ($LASTEXITCODE -eq 1) {
-        Write-Output "The npm test has failed"
-        "Failed" | Set-Content  "test.failed"
-      }
-  displayName: 'Run tests with phpunit'
+      if [ $? -gt 0 ]
+      then
+      echo "Failed" > "test.failed"
+      fi
+  displayName: 'Run PhpUnit'
   continueOnError: true
   ignoreLASTEXITCODE: true
 
