@@ -24,7 +24,7 @@ class DataStoreTest extends TestCase
         $wpDataStore->method('Get')->with($this->stringContains('sn_style_list'))->willReturn($valueToSave);
         $dataStore = new Datastore($wpDataStore);
 
-        $this->assertContains($dataStore->GetStyleList(),   $valueToSave);
+        $this->assertEquals($dataStore->GetStyleList(),   $valueToSave);
     }
 
 }
