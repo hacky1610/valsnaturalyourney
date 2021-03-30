@@ -44,13 +44,14 @@ steps:
     npm install
   displayName: 'npm install'
 
-- powershell: |
+- script: |
       cd wp-content/plugins/shop-notify
       npm run coverage
-      if ($LASTEXITCODE -eq 1) {
-        Write-Output "The npm test has failed"
-        "Failed" | Set-Content  "test.failed"
-      }
+      if [ $? -gt 0 ]
+      then
+        echo "The npm test has failed"
+        echo "Failed" > "test.failed"
+      fi
   displayName: 'Run test'
   continueOnError: true
 
