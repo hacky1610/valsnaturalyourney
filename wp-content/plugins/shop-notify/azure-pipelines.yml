@@ -33,17 +33,6 @@ steps:
       fi
   displayName: 'Run PhpUnit'
   continueOnError: true
-  ignoreLASTEXITCODE: true
-#- powershell: |
-#      . ./_build/ConvertPhpUnitResult.ps1
-#      Convert -source ./php-unit-result.xml -destination ./php-unit-result_converted.xml
-#  displayName: 'Convert PhpUnit Result'
-
-#- task: PublishTestResults@2
-#  inputs:
-#    testResultsFiles: './php-unit-result_converted.xml'
-#    testRunTitle: 'Test results for PHP'
-#  displayName: 'Publish PhpUnit Testresults'
 
 - task: NodeTool@0
   inputs:
@@ -64,7 +53,6 @@ steps:
       }
   displayName: 'Run test'
   continueOnError: true
-  ignoreLASTEXITCODE: true
 
 - task: PublishTestResults@2
   inputs:
